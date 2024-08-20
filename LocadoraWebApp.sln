@@ -3,7 +3,27 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35219.272
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocadoraWebApp", "LocadoraWebApp\LocadoraWebApp.csproj", "{72B3F0C6-887A-4007-B30E-7BEE72F9994D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraWebApp", "LocadoraWebApp\LocadoraWebApp.csproj", "{72B3F0C6-887A-4007-B30E-7BEE72F9994D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Apresentacao", "1. Apresentacao", "{F6DC3308-E4BF-4258-A3E3-934507262B24}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Aplicacao", "2. Aplicacao", "{AE4874AF-B4C0-4BBA-A129-17D251959EEE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Dominio", "3. Dominio", "{C5B03179-982A-4A2C-BA21-7AA5D8696D3F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Infra", "4. Infra", "{57613CB3-4AA5-42C0-9267-18206B79B4F6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. Testes", "5. Testes", "{C9914A11-1004-4F06-B421-07CAC478FD2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.Aplicacao", "Locadora.Aplicacao\Locadora.Aplicacao.csproj", "{BA2BBECB-5477-40EB-A3A6-CF0F6BCE5247}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.Dominio", "Locadora.Dominio\Locadora.Dominio.csproj", "{E2C2BA5C-732C-42E7-B502-6AE7F5080EB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.Infra", "Locadora.Infra\Locadora.Infra.csproj", "{4C39BDD4-E63D-4007-A352-7DF75AE1A38C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.1 Unidade", "5.1 Unidade", "{B08364F2-716F-40D1-91E1-FE42C03F688D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.2 Integracao", "5.2 Integracao", "{B3A0E17C-EC53-4D5F-97D3-224E303C21E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +35,29 @@ Global
 		{72B3F0C6-887A-4007-B30E-7BEE72F9994D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72B3F0C6-887A-4007-B30E-7BEE72F9994D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72B3F0C6-887A-4007-B30E-7BEE72F9994D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA2BBECB-5477-40EB-A3A6-CF0F6BCE5247}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA2BBECB-5477-40EB-A3A6-CF0F6BCE5247}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA2BBECB-5477-40EB-A3A6-CF0F6BCE5247}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA2BBECB-5477-40EB-A3A6-CF0F6BCE5247}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2C2BA5C-732C-42E7-B502-6AE7F5080EB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2C2BA5C-732C-42E7-B502-6AE7F5080EB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2C2BA5C-732C-42E7-B502-6AE7F5080EB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2C2BA5C-732C-42E7-B502-6AE7F5080EB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C39BDD4-E63D-4007-A352-7DF75AE1A38C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C39BDD4-E63D-4007-A352-7DF75AE1A38C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C39BDD4-E63D-4007-A352-7DF75AE1A38C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C39BDD4-E63D-4007-A352-7DF75AE1A38C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{72B3F0C6-887A-4007-B30E-7BEE72F9994D} = {F6DC3308-E4BF-4258-A3E3-934507262B24}
+		{BA2BBECB-5477-40EB-A3A6-CF0F6BCE5247} = {AE4874AF-B4C0-4BBA-A129-17D251959EEE}
+		{E2C2BA5C-732C-42E7-B502-6AE7F5080EB5} = {C5B03179-982A-4A2C-BA21-7AA5D8696D3F}
+		{4C39BDD4-E63D-4007-A352-7DF75AE1A38C} = {57613CB3-4AA5-42C0-9267-18206B79B4F6}
+		{B08364F2-716F-40D1-91E1-FE42C03F688D} = {C9914A11-1004-4F06-B421-07CAC478FD2C}
+		{B3A0E17C-EC53-4D5F-97D3-224E303C21E8} = {C9914A11-1004-4F06-B421-07CAC478FD2C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {92436EBB-EE81-48A4-860D-5DB2DC359A8C}
