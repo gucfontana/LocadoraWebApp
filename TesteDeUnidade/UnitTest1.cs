@@ -1,4 +1,4 @@
-namespace TesteDeUnidade
+namespace Teste.Unidade
 {
     [TestClass]
     public class UnitTest1

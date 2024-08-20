@@ -25,9 +25,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.1 Unidade", "5.1 Unidade"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.2 Integracao", "5.2 Integracao", "{B3A0E17C-EC53-4D5F-97D3-224E303C21E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteDeUnidade", "TesteDeUnidade\TesteDeUnidade.csproj", "{AB9BFEC2-4FCC-4837-95CA-DEC81FDA595A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teste.Unidade", "TesteDeUnidade\Teste.Unidade.csproj", "{AB9BFEC2-4FCC-4837-95CA-DEC81FDA595A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteDeIntegracao", "TesteDeIntegracao\TesteDeIntegracao.csproj", "{AA3A1964-9B3F-4C52-BDB0-6ACFA3E84085}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teste.Integracao", "TesteDeIntegracao\Teste.Integracao.csproj", "{AA3A1964-9B3F-4C52-BDB0-6ACFA3E84085}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
