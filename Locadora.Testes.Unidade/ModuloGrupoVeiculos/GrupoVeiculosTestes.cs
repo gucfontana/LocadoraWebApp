@@ -34,7 +34,7 @@ namespace Locadora.Testes.Unidade.ModuloGrupoVeiculos
 
             // assert
             Assert.AreEqual(1, erros.Count);
-            Assert.AreEqual(errosEsperados, erros);
+            CollectionAssert.AreEqual(errosEsperados, erros);
         }
     }
 }
