@@ -21,9 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Locadora.Infra", "Locadora.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. Testes", "5. Testes", "{DCEED440-535A-4F74-9C7B-6C5B91A3B305}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.1 Unidade", "5.1 Unidade", "{5FB83DB6-858D-4B20-8C29-5412F259CB2F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.1. Unidade", "5.1. Unidade", "{5FB83DB6-858D-4B20-8C29-5412F259CB2F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.2 Integracao", "5.2 Integracao", "{2AC7053A-132E-4017-8C5A-76678E5B9324}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.2. Integracao", "5.2. Integracao", "{2AC7053A-132E-4017-8C5A-76678E5B9324}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.Testes.Unidade", "Locadora.Testes.Unidade\Locadora.Testes.Unidade.csproj", "{02180441-D6C9-4CA8-A1EE-AB15BC2E11A3}"
 EndProject
