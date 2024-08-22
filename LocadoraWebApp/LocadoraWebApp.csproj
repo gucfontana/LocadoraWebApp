@@ -24,4 +24,8 @@
     <ProjectReference Include="..\Locadora.Infra\Locadora.Infra.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\GrupoVeiculos\" />
+  </ItemGroup>
+
 </Project>
