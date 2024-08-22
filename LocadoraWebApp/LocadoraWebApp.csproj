@@ -7,6 +7,27 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\GrupoVeiculos\**" />
+    <Content Remove="Views\GrupoVeiculos\**" />
+    <EmbeddedResource Remove="Views\GrupoVeiculos\**" />
+    <None Remove="Views\GrupoVeiculos\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Views\GrupoVeiculos\Inserir.cshtml" />
+    <Content Include="Views\GrupoVeiculos\Listar.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\GrupoVeiculos\Detalhes.cshtml" />
+    <None Include="Views\GrupoVeiculos\Editar.cshtml" />
+    <None Include="Views\GrupoVeiculos\Excluir.cshtml" />
+    <None Include="Views\GrupoVeiculos\Listar.cshtml" />
+    <None Include="Views\GrupoVeiculos\Inserir.cshtml" />
+    <None Include="Views\GrupoVeiculos\_Informacoes.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.8" />
@@ -22,10 +43,6 @@
     <ProjectReference Include="..\Locadora.Aplicacao\Locadora.Aplicacao.csproj" />
     <ProjectReference Include="..\Locadora.Dominio\Locadora.Dominio.csproj" />
     <ProjectReference Include="..\Locadora.Infra\Locadora.Infra.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\GrupoVeiculos\" />
   </ItemGroup>
 
 </Project>
