@@ -1,8 +1,10 @@
 using System.Reflection;
 using Locadora.Aplicacao.ModuloGrupoVeiculos;
 using Locadora.Dominio.Compartilhado;
+using Locadora.Dominio.ModuloVeiculos;
 using Locadora.Infra.Compartilhado;
 using Locadora.Infra.ModuloGrupoVeiculos;
+using Locadora.Infra.ModuloVeiculos;
 
 namespace LocadoraWebApp
 {
@@ -18,6 +20,7 @@ namespace LocadoraWebApp
 
             // repositorios
              builder.Services.AddScoped<IRepositorioGrupoVeiculos, RepositorioGrupoVeiculosOrm>();
+             builder.Services.AddScoped<IRepositorioVeiculos, RepositorioVeiculosOrm>();
 
             // servicos
             builder.Services.AddScoped<ServicoGrupoVeiculos>();

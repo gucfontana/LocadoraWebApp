@@ -8,7 +8,7 @@ using Locadora.Dominio.ModuloGrupoVeiculos;
 
 namespace Locadora.Dominio.ModuloVeiculos
 {
-    public class Veiculo : EntidadeBase 
+    public class Veiculos : EntidadeBase 
     {
         // Propriedades
 public string Modelo { get; set; }
@@ -16,12 +16,12 @@ public string Modelo { get; set; }
         public TipoCombustivel TipoCombustivel { get; set; }
         public int CapacidadeTanque { get; set; }
         public int GrupoVeiculosId { get; set; }
-        public GrupoVeiculos? GrupoVeiculos { get; set; }
+        public GrupoVeiculos ? GrupoVeiculos { get; set; }
 
         // Construtores
-        protected Veiculo() {}
+        protected Veiculos() {}
 
-        public Veiculo(string modelo, string marca, TipoCombustivel tipoCombustivel, int capacidadeTanque, int grupoVeiculosId)
+        public Veiculos(string modelo, string marca, TipoCombustivel tipoCombustivel, int capacidadeTanque, int grupoVeiculosId)
         {
             Modelo = modelo;
             Marca = marca;
@@ -33,7 +33,7 @@ public string Modelo { get; set; }
         // Validações
         public override List<string> Validar()
         {
-            var erros = new List<string>();
+            List<string> erros = [];
 
             if (string.IsNullOrEmpty(Modelo))
                 erros.Add("Modelo é obrigatório");

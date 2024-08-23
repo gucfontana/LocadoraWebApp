@@ -12,7 +12,7 @@ namespace Locadora.Testes.Unidade.ModuloVeiculos
         {
             var grupo = new GrupoVeiculos("Camionete");
 
-            var veiculo = new Veiculo("Hilux", "Toyota", TipoCombustivel.Flex, 80, 1);
+            var veiculo = new Veiculos("Hilux", "Toyota", TipoCombustivel.Flex, 80, 1);
 
             var erros = veiculo.Validar();
 
@@ -22,7 +22,9 @@ namespace Locadora.Testes.Unidade.ModuloVeiculos
         [TestMethod]
         public void NaoDeveCriarVeiculo()
         {
-var veiculo = new Veiculo("", "", TipoCombustivel.Flex, 0, 0);
+            var grupo = new GrupoVeiculos("Camionete");
+
+            var veiculo = new Veiculos("", "", TipoCombustivel.Flex, 0, 0);
 
             var erros = veiculo.Validar();
 
