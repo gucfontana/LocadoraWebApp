@@ -38,6 +38,11 @@ builder.Property(v => v.Modelo)
                 .HasColumnType("int")
                 .IsRequired();
 
+            builder.Property(v => v.Fotos)
+                .HasColumnName("Fotos")
+                .HasColumnType("varbinary(max)")
+                .HasDefaultValue(Array.Empty<byte>());
+
             builder.Property(v => v.GrupoVeiculosId)
                 .HasColumnName("GrupoVeiculosId")
                 .HasColumnType("int")

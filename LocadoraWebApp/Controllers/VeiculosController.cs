@@ -58,7 +58,6 @@ namespace LocadoraWebApp.Controllers
 
             var resultado = servico.Inserir(veiculo);
 
-
             if (resultado.IsFailed)
             {
                 ApresentarMensagemFalha(resultado.ToResult());
@@ -178,7 +177,23 @@ namespace LocadoraWebApp.Controllers
             return View(detalhesVm);
         }
 
-        private FormularioVeiculosViewModel ? CarregarDadosFormulario
+        public IActionResult ObterFotos(int id)
+        {
+var resultado = servico.SelecionarPorId(id);
+
+if (resultado.IsFailed)
+{
+    ApresentarMensagemFalha(resultado.ToResult());
+
+    return NotFound();
+}
+
+var veiculos = resultado.Value;
+
+            return File(veiculos.Fotos, "image/jpeg");
+        }
+
+    private FormularioVeiculosViewModel ? CarregarDadosFormulario
         (
             FormularioVeiculosViewModel ? dadosPrevios = null
         )

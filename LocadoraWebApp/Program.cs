@@ -27,6 +27,9 @@ namespace LocadoraWebApp
             builder.Services.AddScoped<ServicoGrupoVeiculos>();
             builder.Services.AddScoped<ServicoVeiculos>();
 
+            // features
+            builder.Services.AddScoped<FotosValueResolver>();
+
             builder.Services.AddAutoMapper(cfg =>
             {
                 cfg.AddMaps(Assembly.GetExecutingAssembly());

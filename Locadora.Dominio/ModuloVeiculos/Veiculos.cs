@@ -17,6 +17,7 @@ public string Modelo { get; set; }
         public int CapacidadeTanque { get; set; }
         public int GrupoVeiculosId { get; set; }
         public GrupoVeiculos ? GrupoVeiculos { get; set; }
+        public byte[] Fotos { get; set; }
 
         // Construtores
         protected Veiculos() {}

@@ -24,6 +24,9 @@ namespace LocadoraWebApp.Models
         public int GrupoVeiculosId { get; set; }
 
         public IEnumerable<SelectListItem> ? GrupoVeiculos { get; set; }
+
+        [Required(ErrorMessage = "A foto é obrigatória")]
+        public IFormFile Fotos { get; set; }
     }
 
     public class InserirVeiculosViewModel : FormularioVeiculosViewModel
