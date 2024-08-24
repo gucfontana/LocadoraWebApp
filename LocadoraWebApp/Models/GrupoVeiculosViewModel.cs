@@ -30,3 +30,4 @@ namespace LocadoraWebApp.Models
             public string Nome { get; set; }
         }
     }
+

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Locadora.Dominio.ModuloGrupoVeiculos;
+using Locadora.Dominio.ModuloVeiculos;
 using LocadoraWebApp.Models;
 
 namespace LocadoraWebApp.Mapping

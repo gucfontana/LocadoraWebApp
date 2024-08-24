@@ -1,5 +1,6 @@
 using System.Reflection;
 using Locadora.Aplicacao.ModuloGrupoVeiculos;
+using Locadora.Aplicacao.ModuloVeiculos;
 using Locadora.Dominio.Compartilhado;
 using Locadora.Dominio.ModuloVeiculos;
 using Locadora.Infra.Compartilhado;
@@ -24,6 +25,7 @@ namespace LocadoraWebApp
 
             // servicos
             builder.Services.AddScoped<ServicoGrupoVeiculos>();
+            builder.Services.AddScoped<ServicoVeiculos>();
 
             builder.Services.AddAutoMapper(cfg =>
             {
