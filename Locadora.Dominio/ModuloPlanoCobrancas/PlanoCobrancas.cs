@@ -6,7 +6,7 @@ namespace Locadora.Dominio.ModuloPlanoCobrancas
     public class PlanoCobrancas : EntidadeBase
     {
         public int GrupoVeiculosId { get; set; }
-        public GrupoVeiculos? GrupoVeiculos { get; set; }
+        public GrupoVeiculos ? GrupoVeiculos { get; set; }
         public decimal ValorDiario { get; set; }
         public decimal ValorKmDiario { get; set; }
         public decimal ValorKmControlado { get; set; }
@@ -14,9 +14,10 @@ namespace Locadora.Dominio.ModuloPlanoCobrancas
         public decimal ValorKmExcedido { get; set; }
         public decimal ValorDiarioKmLivre { get; set; }
 
-        protected PlanoCobrancas() { }
+        protected PlanoCobrancas() {}
 
-        public PlanoCobrancas(
+        public PlanoCobrancas
+        (
             int grupoVeiculosId,
             decimal valorDiario,
             decimal valorKmDiario,

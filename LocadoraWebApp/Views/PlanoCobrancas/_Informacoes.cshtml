@@ -1,0 +1,19 @@
+﻿@model LocadoraWebApp.Models.DetalhesPlanoCobrancasViewModel
+
+<div class="row gap-3 my-3 my-xl-5">
+    <label class="fs-4"><strong>Grupo de Veículos:</strong> @Model.GrupoVeiculos</label>
+
+    <label class="fs-4"><strong>Preço Diário (Plano Diário):</strong> @Model.PrecoDiarioPlanoDiario.ToString("C2")</label>
+
+    <label class="fs-4"><strong>Preço por Km (Plano Diário):</strong> @Model.PrecoQuilometroPlanoDiario.ToString("C2")</label>
+
+    <label class="fs-4"><strong>Km Disponíveis (Plano Controlado):</strong> @Model.QuilometrosDisponiveisPlanoControlado km(s)</label>
+
+    <label class="fs-4"><strong>Preço Diário Controlado (Plano Controlado):</strong> @Model.PrecoDiarioPlanoControlado.ToString("C2")</label>
+
+    <label class="fs-4"><strong>Preço por Km extrapolado (Plano Controlado):</strong> @Model.PrecoQuilometroExtrapoladoPlanoControlado.ToString("C2")</label>
+
+    <label class="fs-4"><strong>Preço Livre (Plano Livre):</strong> @Model.PrecoDiarioPlanoLivre.ToString("C2")</label>
+
+    <label class="fs-5"><strong>Id:</strong> [@Model.Id]</label>
+</div>

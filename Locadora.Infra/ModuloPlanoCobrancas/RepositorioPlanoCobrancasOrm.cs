@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Locadora.Infra.ModuloPlanoCobrancas
 {
-    public class RepositorioPlanoCobrancasOrm : RepositorioBaseOrm<PlanoCobrancas>, IRepositorio<PlanoCobrancas>
+    public class RepositorioPlanoCobrancasOrm : RepositorioBaseOrm<PlanoCobrancas>, IRepositorio<PlanoCobrancas>, IRepositorioPlanoCobrancas
     {
         public RepositorioPlanoCobrancasOrm(LocadoraDbContext dbContext) : base(dbContext)
         {
