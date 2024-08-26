@@ -1,4 +1,5 @@
 ﻿using Locadora.Dominio.ModuloGrupoVeiculos;
+using Locadora.Dominio.ModuloPlanoCobrancas;
 using Locadora.Dominio.ModuloVeiculos;
 using Locadora.Infra.ModuloGrupoVeiculos;
 using Locadora.Infra.ModuloVeiculos;
@@ -26,12 +27,14 @@ namespace Locadora.Infra.Compartilhado
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new MapeadorGrupoVeiculos());
-            modelBuilder.ApplyConfiguration(new MapeadorVeiculos());
+            var assembly = typeof(LocadoraDbContext).Assembly;
+            modelBuilder.ApplyConfigurationsFromAssembly(assembly);
+
             base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<GrupoVeiculos> GrupoVeiculos { get; set; }
         public DbSet<Veiculos> Veiculos { get; set; } 
+        public DbSet<PlanoCobrancas> PlanoCobrancas { get; set; }
     }
 }

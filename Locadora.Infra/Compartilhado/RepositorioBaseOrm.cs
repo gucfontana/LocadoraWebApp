@@ -3,11 +3,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Locadora.Infra.Compartilhado
 {
-    public abstract class RepositorioBaseEmOrm<TEntidade> where TEntidade : EntidadeBase
+    public abstract class RepositorioBaseOrm<TEntidade> where TEntidade : EntidadeBase
     {
         protected readonly LocadoraDbContext dbContext;
 
-        public RepositorioBaseEmOrm(LocadoraDbContext dbContext)
+        public RepositorioBaseOrm(LocadoraDbContext dbContext)
         {
             this.dbContext = dbContext;
         }

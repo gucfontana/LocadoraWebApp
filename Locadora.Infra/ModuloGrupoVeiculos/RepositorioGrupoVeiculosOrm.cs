@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Locadora.Infra.ModuloGrupoVeiculos
 {
-    public class RepositorioGrupoVeiculosOrm : RepositorioBaseEmOrm<GrupoVeiculos>, IRepositorioGrupoVeiculos
+    public class RepositorioGrupoVeiculosOrm : RepositorioBaseOrm<GrupoVeiculos>, IRepositorioGrupoVeiculos
     {
         public RepositorioGrupoVeiculosOrm(LocadoraDbContext dbContext) : base(dbContext)
         {

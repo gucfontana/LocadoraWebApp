@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Locadora.Infra.ModuloVeiculos
 {
-    public class RepositorioVeiculosOrm : RepositorioBaseEmOrm<Veiculos>, IRepositorioVeiculos
+    public class RepositorioVeiculosOrm : RepositorioBaseOrm<Veiculos>, IRepositorioVeiculos
     {
         public RepositorioVeiculosOrm(LocadoraDbContext dbContext) : base(dbContext)
         {
