@@ -1,13 +1,16 @@
 using System.Reflection;
 using Locadora.Aplicacao.ModuloGrupoVeiculos;
 using Locadora.Aplicacao.ModuloPlanoCobrancas;
+using Locadora.Aplicacao.ModuloTaxas;
 using Locadora.Aplicacao.ModuloVeiculos;
 using Locadora.Dominio.Compartilhado;
 using Locadora.Dominio.ModuloPlanoCobrancas;
+using Locadora.Dominio.ModuloTaxas;
 using Locadora.Dominio.ModuloVeiculos;
 using Locadora.Infra.Compartilhado;
 using Locadora.Infra.ModuloGrupoVeiculos;
 using Locadora.Infra.ModuloPlanoCobrancas;
+using Locadora.Infra.ModuloTaxas;
 using Locadora.Infra.ModuloVeiculos;
 using LocadoraWebApp.Mapping.Resolvers;
 
@@ -27,11 +30,13 @@ namespace LocadoraWebApp
              builder.Services.AddScoped<IRepositorioGrupoVeiculos, RepositorioGrupoVeiculosOrm>();
              builder.Services.AddScoped<IRepositorioVeiculos, RepositorioVeiculosOrm>();
              builder.Services.AddScoped<IRepositorioPlanoCobrancas, RepositorioPlanoCobrancasOrm>();
+             builder.Services.AddScoped<IRepositorioTaxas, RepositorioTaxasOrm>();
 
             // servicos
             builder.Services.AddScoped<ServicoGrupoVeiculos>();
             builder.Services.AddScoped<ServicoVeiculos>();
             builder.Services.AddScoped<ServicoPlanoCobrancas>();
+            builder.Services.AddScoped<ServicoTaxas>();
 
             // features
             builder.Services.AddScoped<FotosValueResolver>();
