@@ -85,6 +85,34 @@ namespace Locadora.Infra.Migrations
                     b.ToTable("TBPlanoCobrancas", (string)null);
                 });
 
+            modelBuilder.Entity("Locadora.Dominio.ModuloTaxas.Taxas", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar")
+                        .HasColumnName("Nome");
+
+                    b.Property<int>("TipoCobranca")
+                        .HasColumnType("int")
+                        .HasColumnName("TipoCobranca");
+
+                    b.Property<decimal>("Valor")
+                        .HasColumnType("decimal(18,2)")
+                        .HasColumnName("Valor");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TBTaxas", (string)null);
+                });
+
             modelBuilder.Entity("Locadora.Dominio.ModuloVeiculos.Veiculos", b =>
                 {
                     b.Property<int>("Id")

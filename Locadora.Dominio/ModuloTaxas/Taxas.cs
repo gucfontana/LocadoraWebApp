@@ -1,22 +1,26 @@
-using System.ComponentModel.DataAnnotations;
 using Locadora.Dominio.Compartilhado;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace Locadora.Dominio.ModuloTaxas
 {
-    public class Taxas(string ? nome, decimal valor, Taxas.TipoCobrancaEnum tipoCobranca) : EntidadeBase
+    public partial class Taxas : EntidadeBase
     {
 
-        private string ? Nome { get; set; } = nome;
-        private decimal Valor { get; set; } = valor;
+        public string ? Nome { get; set; }
+        public decimal Valor { get; set; }
         public TipoCobrancaEnum TipoCobranca { get; set; }
 
-        public enum TipoCobrancaEnum
+        protected Taxas()
         {
-            [Display(Name = "Diária")]
-            Diaria,
-            Fixa
-        } 
-        
+        }
+
+        public Taxas(string nome, decimal valor, TipoCobrancaEnum tipoCobranca) : this()
+        {
+            Nome = nome;
+            Valor = valor;
+            TipoCobranca = tipoCobranca;
+        }
+
         public override List<string> Validar()
         {
             List<string> erros = [];

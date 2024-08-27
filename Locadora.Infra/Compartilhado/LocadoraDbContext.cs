@@ -1,5 +1,6 @@
 ﻿using Locadora.Dominio.ModuloGrupoVeiculos;
 using Locadora.Dominio.ModuloPlanoCobrancas;
+using Locadora.Dominio.ModuloTaxas;
 using Locadora.Dominio.ModuloVeiculos;
 using Locadora.Infra.ModuloGrupoVeiculos;
 using Locadora.Infra.ModuloVeiculos;
@@ -11,6 +12,11 @@ namespace Locadora.Infra.Compartilhado
 {
     public class LocadoraDbContext : DbContext
     {
+        public DbSet<GrupoVeiculos> GrupoVeiculos { get; set; }
+        public DbSet<Veiculos> Veiculos { get; set; }
+        public DbSet<PlanoCobrancas> PlanoCobrancas { get; set; }
+        public DbSet<Taxas> Taxas { get; set; }
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var config = new ConfigurationBuilder()
@@ -32,9 +38,5 @@ namespace Locadora.Infra.Compartilhado
 
             base.OnModelCreating(modelBuilder);
         }
-
-        public DbSet<GrupoVeiculos> GrupoVeiculos { get; set; }
-        public DbSet<Veiculos> Veiculos { get; set; } 
-        public DbSet<PlanoCobrancas> PlanoCobrancas { get; set; }
     }
 }
