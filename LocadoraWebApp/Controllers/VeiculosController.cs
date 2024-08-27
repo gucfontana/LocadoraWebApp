@@ -11,20 +11,22 @@ namespace LocadoraWebApp.Controllers
 {
     public class VeiculosController : WebControllerBase
     {
-        // Injeção de dependência
         private readonly ServicoVeiculos servico;
         private readonly ServicoGrupoVeiculos servicoGrupos;
-        private readonly IMapper mapper;
+        private readonly IMapper mapeador;
 
-        // Construtor
-        public VeiculosController(ServicoGrupoVeiculos servicoGrupos, ServicoVeiculos servico, IMapper mapper)
+        public VeiculosController
+        (
+            ServicoVeiculos servico,
+            ServicoGrupoVeiculos servicoGrupos,
+            IMapper mapeador
+        )
         {
             this.servico = servico;
             this.servicoGrupos = servicoGrupos;
-            this.mapper = mapper;
+            this.mapeador = mapeador;
         }
 
-        // Métodos
         public IActionResult Listar()
         {
             var resultado = servico.SelecionarTodos();
@@ -38,7 +40,7 @@ namespace LocadoraWebApp.Controllers
 
             var veiculos = resultado.Value;
 
-            var listarVeiculosVm = mapper.Map<IEnumerable<ListarVeiculosViewModel>>(veiculos);
+            var listarVeiculosVm = mapeador.Map<IEnumerable<ListarVeiculosViewModel>>(veiculos);
 
             return View(listarVeiculosVm);
         }
@@ -54,7 +56,7 @@ namespace LocadoraWebApp.Controllers
             if (!ModelState.IsValid)
                 return View(CarregarDadosFormulario(inserirVm));
 
-            var veiculo = mapper.Map<Veiculos>(inserirVm);
+            var veiculo = mapeador.Map<Veiculos>(inserirVm);
 
             var resultado = servico.Inserir(veiculo);
 
@@ -92,12 +94,7 @@ namespace LocadoraWebApp.Controllers
 
             var veiculo = resultado.Value;
 
-            var editarVm = mapper.Map<EditarVeiculosViewModel>(veiculo);
-
-            var gruposDisponiveis = resultadoGrupos.Value;
-
-            editarVm.GrupoVeiculos = gruposDisponiveis
-                .Select(g => new SelectListItem(g.Nome, g.Id.ToString()));
+            var editarVm = mapeador.Map<EditarVeiculosViewModel>(veiculo);
 
             return View(editarVm);
         }
@@ -108,7 +105,7 @@ namespace LocadoraWebApp.Controllers
             if (!ModelState.IsValid)
                 return View(CarregarDadosFormulario(editarVm));
 
-            var veiculo = mapper.Map<Veiculos>(editarVm);
+            var veiculo = mapeador.Map<Veiculos>(editarVm);
 
             var resultado = servico.Editar(veiculo);
 
@@ -137,7 +134,7 @@ namespace LocadoraWebApp.Controllers
 
             var veiculo = resultado.Value;
 
-            var detalhesVm = mapper.Map<DetalhesVeiculosViewModel>(veiculo);
+            var detalhesVm = mapeador.Map<DetalhesVeiculosViewModel>(veiculo);
 
             return View(detalhesVm);
         }
@@ -172,28 +169,28 @@ namespace LocadoraWebApp.Controllers
 
             var veiculo = resultado.Value;
 
-            var detalhesVm = mapper.Map<DetalhesVeiculosViewModel>(veiculo);
+            var detalhesVm = mapeador.Map<DetalhesVeiculosViewModel>(veiculo);
 
             return View(detalhesVm);
         }
 
         public IActionResult ObterFotos(int id)
         {
-var resultado = servico.SelecionarPorId(id);
+            var resultado = servico.SelecionarPorId(id);
 
-if (resultado.IsFailed)
-{
-    ApresentarMensagemFalha(resultado.ToResult());
+            if (resultado.IsFailed)
+            {
+                ApresentarMensagemFalha(resultado.ToResult());
 
-    return NotFound();
-}
+                return NotFound();
+            }
 
-var veiculos = resultado.Value;
+            var veiculo = resultado.Value;
 
-            return File(veiculos.Fotos, "image/jpeg");
+            return File(veiculo.Fotos, "image/jpeg");
         }
 
-    private FormularioVeiculosViewModel ? CarregarDadosFormulario
+        private FormularioVeiculosViewModel ? CarregarDadosFormulario
         (
             FormularioVeiculosViewModel ? dadosPrevios = null
         )
@@ -210,15 +207,7 @@ var veiculos = resultado.Value;
             var gruposDisponiveis = resultadoGrupos.Value;
 
             if (dadosPrevios is null)
-            {
-                var formularioVm = new FormularioVeiculosViewModel()
-                {
-                    GrupoVeiculos = gruposDisponiveis
-                        .Select(g => new SelectListItem(g.Nome, g.Id.ToString()))
-                };
-
-                return formularioVm;
-            }
+                dadosPrevios = new FormularioVeiculosViewModel();
 
             dadosPrevios.GrupoVeiculos = gruposDisponiveis
                 .Select(g => new SelectListItem(g.Nome, g.Id.ToString()));

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Locadora.Dominio.ModuloVeiculos;
+using LocadoraWebApp.Mapping.Resolvers;
 using LocadoraWebApp.Models;
 
 namespace LocadoraWebApp.Mapping
@@ -26,28 +27,8 @@ namespace LocadoraWebApp.Mapping
                     opt => opt.MapFrom(src => src.GrupoVeiculos!.Nome)
                 );
 
-            CreateMap<Veiculos, EditarVeiculosViewModel>();
-        }
-    }
-}
-
-public class FotosValueResolver : IValueResolver<FormularioVeiculosViewModel, Veiculos, byte[]>
-{
-    public FotosValueResolver() {}
-
-    public byte[] Resolve
-    (
-        FormularioVeiculosViewModel source,
-        Veiculos destination,
-        byte[] destMember,
-        ResolutionContext context
-    )
-    {
-        using ( var memoryStream = new MemoryStream() )
-        {
-            source.Fotos.CopyTo(memoryStream);
-
-            return memoryStream.ToArray();
+            CreateMap<Veiculos, EditarVeiculosViewModel>()
+                .ForMember(v => v.GrupoVeiculos, opt => opt.MapFrom<GrupoVeiculosResolver>());
         }
     }
 }

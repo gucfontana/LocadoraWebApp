@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Locadora.Dominio.ModuloPlanoCobrancas;
+using LocadoraWebApp.Mapping.Resolvers;
 using LocadoraWebApp.Models;
 
 namespace LocadoraWebApp.Mapping
@@ -21,7 +22,8 @@ namespace LocadoraWebApp.Mapping
                     dest => dest.GrupoVeiculos,
                     opt => opt.MapFrom(src => src.GrupoVeiculos!.Nome));
 
-            CreateMap<PlanoCobrancas, EditarPlanoCobrancasViewModel>();
+            CreateMap<PlanoCobrancas, EditarPlanoCobrancasViewModel>()
+                .ForMember(dest => dest.GruposVeiculos, opt => opt.MapFrom<GrupoVeiculosResolver>());
         }
     }
 }

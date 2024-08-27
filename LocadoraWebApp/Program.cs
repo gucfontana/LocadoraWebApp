@@ -9,6 +9,7 @@ using Locadora.Infra.Compartilhado;
 using Locadora.Infra.ModuloGrupoVeiculos;
 using Locadora.Infra.ModuloPlanoCobrancas;
 using Locadora.Infra.ModuloVeiculos;
+using LocadoraWebApp.Mapping.Resolvers;
 
 namespace LocadoraWebApp
 {
@@ -34,6 +35,7 @@ namespace LocadoraWebApp
 
             // features
             builder.Services.AddScoped<FotosValueResolver>();
+            builder.Services.AddScoped<GrupoVeiculosResolver>();
 
             builder.Services.AddAutoMapper(cfg =>
             {

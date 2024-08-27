@@ -56,9 +56,9 @@ namespace LocadoraWebApp.Controllers
             if (!ModelState.IsValid)
                 return View(CarregarDadosFormulario(inserirVm));
 
-            var planoCobranca = mapeador.Map<PlanoCobrancas>(inserirVm);
+            var planoCobrancas = mapeador.Map<PlanoCobrancas>(inserirVm);
 
-            var resultado = servico.Inserir(planoCobranca);
+            var resultado = servico.Inserir(planoCobrancas);
 
             if (resultado.IsFailed)
             {
@@ -67,7 +67,7 @@ namespace LocadoraWebApp.Controllers
                 return RedirectToAction(nameof ( Listar ));
             }
 
-            ApresentarMensagemSucesso($"O registro ID [{planoCobranca.Id}] foi inserido com sucesso!");
+            ApresentarMensagemSucesso($"O registro ID [{planoCobrancas.Id}] foi inserido com sucesso!");
 
             return RedirectToAction(nameof ( Listar ));
         }
@@ -86,11 +86,6 @@ namespace LocadoraWebApp.Controllers
             var planoCobranca = resultado.Value;
 
             var editarVm = mapeador.Map<EditarPlanoCobrancasViewModel>(planoCobranca);
-
-            var grupos = servicoGrupos.SelecionarTodos().Value;
-
-            editarVm.GruposVeiculos = grupos
-                .Select(g => new SelectListItem(g.Nome, g.Id.ToString()));
 
             return View(editarVm);
         }
@@ -182,15 +177,7 @@ namespace LocadoraWebApp.Controllers
             }
 
             if (dadosPrevios is null)
-            {
-                var formularioVm = new FormularioPlanoCobrancasViewModel
-                {
-                    GruposVeiculos = resultadoGrupos.Value
-                        .Select(g => new SelectListItem(g.Nome, g.Id.ToString()))
-                };
-
-                return formularioVm;
-            }
+                dadosPrevios = new FormularioPlanoCobrancasViewModel();
 
             dadosPrevios.GruposVeiculos = resultadoGrupos.Value
                 .Select(g => new SelectListItem(g.Nome, g.Id.ToString()));
