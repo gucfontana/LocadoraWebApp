@@ -9,6 +9,10 @@
   <ItemGroup>
     <Compile Remove="Views\GrupoVeiculos\**" />
     <Content Remove="Views\GrupoVeiculos\**" />
+    <Content Include="Views\GrupoVeiculos\Detalhes.cshtml" />
+    <Content Include="Views\GrupoVeiculos\Editar.cshtml" />
+    <Content Include="Views\GrupoVeiculos\Excluir.cshtml" />
+    <Content Include="Views\GrupoVeiculos\_Informacoes.cshtml" />
     <EmbeddedResource Remove="Views\GrupoVeiculos\**" />
     <None Remove="Views\GrupoVeiculos\**" />
   </ItemGroup>
@@ -19,12 +23,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Views\GrupoVeiculos\Detalhes.cshtml" />
-    <None Include="Views\GrupoVeiculos\Editar.cshtml" />
-    <None Include="Views\GrupoVeiculos\Excluir.cshtml" />
     <None Include="Views\GrupoVeiculos\Listar.cshtml" />
     <None Include="Views\GrupoVeiculos\Inserir.cshtml" />
-    <None Include="Views\GrupoVeiculos\_Informacoes.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
