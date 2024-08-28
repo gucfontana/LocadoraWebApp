@@ -1,17 +1,20 @@
 using System.Reflection;
 using Locadora.Aplicacao.ModuloClientes;
+using Locadora.Aplicacao.ModuloCondutores;
 using Locadora.Aplicacao.ModuloGrupoVeiculos;
 using Locadora.Aplicacao.ModuloPlanoCobrancas;
 using Locadora.Aplicacao.ModuloTaxas;
 using Locadora.Aplicacao.ModuloVeiculos;
 using Locadora.Dominio.Compartilhado;
 using Locadora.Dominio.ModuloClientes;
+using Locadora.Dominio.ModuloCondutores;
 using Locadora.Dominio.ModuloGrupoVeiculos;
 using Locadora.Dominio.ModuloPlanoCobrancas;
 using Locadora.Dominio.ModuloTaxas;
 using Locadora.Dominio.ModuloVeiculos;
 using Locadora.Infra.Compartilhado;
 using Locadora.Infra.ModuloClientes;
+using Locadora.Infra.ModuloCondutores;
 using Locadora.Infra.ModuloGrupoVeiculos;
 using Locadora.Infra.ModuloPlanoCobrancas;
 using Locadora.Infra.ModuloTaxas;
@@ -36,6 +39,7 @@ namespace LocadoraWebApp
              builder.Services.AddScoped<IRepositorioPlanoCobrancas, RepositorioPlanoCobrancasOrm>();
              builder.Services.AddScoped<IRepositorioTaxas, RepositorioTaxasOrm>();
              builder.Services.AddScoped<IRepositorioClientes, RepositorioClientesOrm>();
+             builder.Services.AddScoped<IRepositorioCondutores, RepositorioCondutoresOrm>();
 
             // servicos
             builder.Services.AddScoped<ServicoGrupoVeiculos>();
@@ -43,6 +47,7 @@ namespace LocadoraWebApp
             builder.Services.AddScoped<ServicoPlanoCobrancas>();
             builder.Services.AddScoped<ServicoTaxas>();
             builder.Services.AddScoped<ServicoClientes>();
+            builder.Services.AddScoped<ServicoCondutores>();
 
             // features
             builder.Services.AddScoped<FotosValueResolver>();
