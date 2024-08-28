@@ -6,7 +6,7 @@ namespace Locadora.Testes.Integracao.ModuloClientes
 {
     [TestClass]
     [TestCategory("Integracao")]
-    public class RepositorioClientesOrmTestes : RepositorioEmOrmTestsBase
+    public class RepositorioClientesOrmTestes : RepositorioEmOrmTestesBase
     {
         [TestMethod]
         public void DeveInserirClientes()

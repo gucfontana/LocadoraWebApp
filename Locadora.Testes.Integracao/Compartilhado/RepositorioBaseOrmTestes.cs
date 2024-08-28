@@ -1,11 +1,13 @@
 using FizzWare.NBuilder;
 using Locadora.Dominio.ModuloClientes;
+using Locadora.Dominio.ModuloCondutores;
 using Locadora.Dominio.ModuloGrupoVeiculos;
 using Locadora.Dominio.ModuloPlanoCobrancas;
 using Locadora.Dominio.ModuloTaxas;
 using Locadora.Dominio.ModuloVeiculos;
 using Locadora.Infra.Compartilhado;
 using Locadora.Infra.ModuloClientes;
+using Locadora.Infra.ModuloCondutores;
 using Locadora.Infra.ModuloGrupoVeiculos;
 using Locadora.Infra.ModuloPlanoCobrancas;
 using Locadora.Infra.ModuloTaxas;
@@ -13,7 +15,7 @@ using Locadora.Infra.ModuloVeiculos;
 
 namespace Locadora.Testes.Integracao.Compartilhado
 {
-    public abstract class RepositorioEmOrmTestsBase
+    public abstract class RepositorioEmOrmTestesBase
     {
         protected LocadoraDbContext dbContext;
         protected RepositorioTaxasOrm repositorioTaxa;
@@ -21,6 +23,7 @@ namespace Locadora.Testes.Integracao.Compartilhado
         protected RepositorioVeiculosOrm repositorioVeiculo;
         protected RepositorioGrupoVeiculosOrm repositorioGrupo;
         protected RepositorioPlanoCobrancasOrm repositorioPlano;
+        protected RepositorioCondutoresOrm repositorioCondutor;
 
         [TestInitialize]
         public void Inicializar()
@@ -32,6 +35,7 @@ namespace Locadora.Testes.Integracao.Compartilhado
             dbContext.Clientes.RemoveRange(dbContext.Clientes);
             dbContext.Veiculos.RemoveRange(dbContext.Veiculos);
             dbContext.GrupoVeiculos.RemoveRange(dbContext.GrupoVeiculos);
+            dbContext.Condutores.RemoveRange(dbContext.Condutores);
 
             dbContext.SaveChanges();
 
@@ -40,12 +44,14 @@ namespace Locadora.Testes.Integracao.Compartilhado
             repositorioCliente = new RepositorioClientesOrm(dbContext);
             repositorioVeiculo = new RepositorioVeiculosOrm(dbContext);
             repositorioGrupo = new RepositorioGrupoVeiculosOrm(dbContext);
+            repositorioCondutor = new RepositorioCondutoresOrm(dbContext);
 
             BuilderSetup.SetCreatePersistenceMethod<Taxas>(repositorioTaxa.Inserir);
             BuilderSetup.SetCreatePersistenceMethod<PlanoCobrancas>(repositorioPlano.Inserir);
             BuilderSetup.SetCreatePersistenceMethod<Clientes>(repositorioCliente.Inserir);
             BuilderSetup.SetCreatePersistenceMethod<Veiculos>(repositorioVeiculo.Inserir);
             BuilderSetup.SetCreatePersistenceMethod<GrupoVeiculos>(repositorioGrupo.Inserir);
+            BuilderSetup.SetCreatePersistenceMethod<Condutores>(repositorioCondutor.Inserir);
         }
     }
 }

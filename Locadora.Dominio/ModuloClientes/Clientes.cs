@@ -1,5 +1,6 @@
 using System.Net.Mail;
 using Locadora.Dominio.Compartilhado;
+using Locadora.Dominio.ModuloCondutores;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.IdentityModel.Tokens;
@@ -18,8 +19,9 @@ namespace Locadora.Dominio.ModuloClientes
         public string Cep { get; set; }
         public string Rua { get; set; }
         public string Bairro { get; set; }
+        public IEnumerable<Condutores> ? Condutores { get; set; }
 
-        protected Clientes() {} //frameworks
+        protected Clientes() { Condutores = []; } //frameworks
 
         public Clientes
         (
