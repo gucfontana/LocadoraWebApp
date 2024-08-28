@@ -1,7 +1,6 @@
 ﻿using Locadora.Dominio.Compartilhado;
-using Locadora.Dominio.ModuloGrupoVeiculos;
 
-namespace Locadora.Infra.ModuloGrupoVeiculos
+namespace Locadora.Dominio.ModuloGrupoVeiculos
 {
     public interface IRepositorioGrupoVeiculos : IRepositorio<GrupoVeiculos>
     {

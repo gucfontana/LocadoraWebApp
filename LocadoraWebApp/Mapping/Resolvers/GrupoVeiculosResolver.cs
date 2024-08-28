@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Locadora.Dominio.ModuloGrupoVeiculos;
 using Locadora.Infra.ModuloGrupoVeiculos;
 using Microsoft.AspNetCore.Mvc.Rendering;
 

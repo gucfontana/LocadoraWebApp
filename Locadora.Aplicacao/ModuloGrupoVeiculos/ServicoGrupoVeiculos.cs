@@ -1,6 +1,5 @@
 ﻿using FluentResults;
 using Locadora.Dominio.ModuloGrupoVeiculos;
-using Locadora.Infra.ModuloGrupoVeiculos;
 
 namespace Locadora.Aplicacao.ModuloGrupoVeiculos
 {

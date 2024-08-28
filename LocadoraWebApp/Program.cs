@@ -4,6 +4,7 @@ using Locadora.Aplicacao.ModuloPlanoCobrancas;
 using Locadora.Aplicacao.ModuloTaxas;
 using Locadora.Aplicacao.ModuloVeiculos;
 using Locadora.Dominio.Compartilhado;
+using Locadora.Dominio.ModuloGrupoVeiculos;
 using Locadora.Dominio.ModuloPlanoCobrancas;
 using Locadora.Dominio.ModuloTaxas;
 using Locadora.Dominio.ModuloVeiculos;
