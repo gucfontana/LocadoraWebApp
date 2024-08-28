@@ -21,6 +21,70 @@ namespace Locadora.Infra.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Locadora.Dominio.ModuloClientes.Clientes", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Bairro")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("Bairro");
+
+                    b.Property<string>("Cep")
+                        .IsRequired()
+                        .HasColumnType("varchar(10)")
+                        .HasColumnName("Cep");
+
+                    b.Property<string>("Cidade")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("Cidade");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("Email");
+
+                    b.Property<string>("Estado")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("Estado");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("Nome");
+
+                    b.Property<string>("NumeroDocumento")
+                        .IsRequired()
+                        .HasColumnType("varchar(20)")
+                        .HasColumnName("NumeroDocumento");
+
+                    b.Property<string>("Rua")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("Rua");
+
+                    b.Property<string>("Telefone")
+                        .IsRequired()
+                        .HasColumnType("varchar(15)")
+                        .HasColumnName("Telefone");
+
+                    b.Property<int>("TipoCadastroCliente")
+                        .HasColumnType("int")
+                        .HasColumnName("TipoCadastroCliente");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TBClientes", (string)null);
+                });
+
             modelBuilder.Entity("Locadora.Dominio.ModuloGrupoVeiculos.GrupoVeiculos", b =>
                 {
                     b.Property<int>("Id")

@@ -1,4 +1,5 @@
-﻿using Locadora.Dominio.ModuloGrupoVeiculos;
+﻿using Locadora.Dominio.ModuloClientes;
+using Locadora.Dominio.ModuloGrupoVeiculos;
 using Locadora.Dominio.ModuloPlanoCobrancas;
 using Locadora.Dominio.ModuloTaxas;
 using Locadora.Dominio.ModuloVeiculos;
@@ -16,6 +17,7 @@ namespace Locadora.Infra.Compartilhado
         public DbSet<Veiculos> Veiculos { get; set; }
         public DbSet<PlanoCobrancas> PlanoCobrancas { get; set; }
         public DbSet<Taxas> Taxas { get; set; }
+        public DbSet<Clientes> Clientes { get; set; }
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
