@@ -17,7 +17,7 @@ namespace Locadora.Testes.Integracao.Compartilhado
     {
         protected LocadoraDbContext dbContext;
         protected RepositorioTaxasOrm repositorioTaxa;
-        protected RepositorioClientesEmOrm repositorioCliente;
+        protected RepositorioClientesOrm repositorioCliente;
         protected RepositorioVeiculosOrm repositorioVeiculo;
         protected RepositorioGrupoVeiculosOrm repositorioGrupo;
         protected RepositorioPlanoCobrancasOrm repositorioPlano;
@@ -37,7 +37,7 @@ namespace Locadora.Testes.Integracao.Compartilhado
 
             repositorioTaxa = new RepositorioTaxasOrm(dbContext);
             repositorioPlano = new RepositorioPlanoCobrancasOrm(dbContext);
-            repositorioCliente = new RepositorioClientesEmOrm(dbContext);
+            repositorioCliente = new RepositorioClientesOrm(dbContext);
             repositorioVeiculo = new RepositorioVeiculosOrm(dbContext);
             repositorioGrupo = new RepositorioGrupoVeiculosOrm(dbContext);
 

@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Locadora.Infra.ModuloClientes;
 
-public class RepositorioClientesEmOrm : RepositorioBaseOrm<Clientes>, IRepositorioClientes
+public class RepositorioClientesOrm : RepositorioBaseOrm<Clientes>, IRepositorioClientes
 {
-    public RepositorioClientesEmOrm(LocadoraDbContext dbContext) : base(dbContext)
+    public RepositorioClientesOrm(LocadoraDbContext dbContext) : base(dbContext)
     {
     }
 
