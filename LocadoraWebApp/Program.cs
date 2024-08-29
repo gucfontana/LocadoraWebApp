@@ -1,18 +1,20 @@
 using System.Reflection;
 using Locadora.Aplicacao.ModuloClientes;
+using Locadora.Aplicacao.ModuloCombustiveis;
 using Locadora.Aplicacao.ModuloCondutores;
 using Locadora.Aplicacao.ModuloGrupoVeiculos;
 using Locadora.Aplicacao.ModuloPlanoCobrancas;
 using Locadora.Aplicacao.ModuloTaxas;
 using Locadora.Aplicacao.ModuloVeiculos;
-using Locadora.Dominio.Compartilhado;
 using Locadora.Dominio.ModuloClientes;
+using Locadora.Dominio.ModuloCombustiveis;
 using Locadora.Dominio.ModuloCondutores;
 using Locadora.Dominio.ModuloGrupoVeiculos;
 using Locadora.Dominio.ModuloPlanoCobrancas;
 using Locadora.Dominio.ModuloTaxas;
 using Locadora.Dominio.ModuloVeiculos;
 using Locadora.Infra.Compartilhado;
+using Locadora.Infra.IO.ModuloCombustiveis;
 using Locadora.Infra.ModuloClientes;
 using Locadora.Infra.ModuloCondutores;
 using Locadora.Infra.ModuloGrupoVeiculos;
@@ -28,7 +30,10 @@ namespace LocadoraWebApp
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
+            
+            builder.Services.AddScoped<IRepositorioCombustiveis, RepositorioCombustiveis>();
+            builder.Services.AddScoped<ServicoCombustiveis>();
+            
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddDbContext<LocadoraDbContext>();
@@ -41,6 +46,7 @@ namespace LocadoraWebApp
              builder.Services.AddScoped<IRepositorioClientes, RepositorioClientesOrm>();
              builder.Services.AddScoped<IRepositorioCondutores, RepositorioCondutoresOrm>();
 
+
             // servicos
             builder.Services.AddScoped<ServicoGrupoVeiculos>();
             builder.Services.AddScoped<ServicoVeiculos>();
@@ -48,6 +54,7 @@ namespace LocadoraWebApp
             builder.Services.AddScoped<ServicoTaxas>();
             builder.Services.AddScoped<ServicoClientes>();
             builder.Services.AddScoped<ServicoCondutores>();
+            builder.Services.AddScoped<ServicoCombustiveis>();
 
             // features
             builder.Services.AddScoped<FotosValueResolver>();

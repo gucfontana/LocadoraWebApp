@@ -11,6 +11,7 @@
     <Content Remove="Views\GrupoVeiculos\**" />
     <EmbeddedResource Remove="Views\GrupoVeiculos\**" />
     <None Remove="Views\GrupoVeiculos\**" />
+    <Content Remove="Combustiveis.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,7 +43,9 @@
   <ItemGroup>
     <ProjectReference Include="..\Locadora.Aplicacao\Locadora.Aplicacao.csproj" />
     <ProjectReference Include="..\Locadora.Dominio\Locadora.Dominio.csproj" />
+    <ProjectReference Include="..\Locadora.Infra.IO\Locadora.Infra.IO.csproj" />
     <ProjectReference Include="..\Locadora.Infra\Locadora.Infra.csproj" />
+    <ProjectReference Include="..\Locadora.Testes.Unidade\Locadora.Testes.Unidade.csproj" />
   </ItemGroup>
 
 </Project>

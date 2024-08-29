@@ -7,7 +7,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Locadora.Aplicacao\Locadora.Aplicacao.csproj" />
       <ProjectReference Include="..\Locadora.Dominio\Locadora.Dominio.csproj" />
+      <ProjectReference Include="..\Locadora.Infra\Locadora.Infra.csproj" />
     </ItemGroup>
 
 </Project>
