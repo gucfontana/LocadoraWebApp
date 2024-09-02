@@ -50,5 +50,17 @@ public string Modelo { get; set; }
 
             return erros;
         }
+
+        public static bool Alugado { get; set; }
+        
+        public static void Alugar()
+        {
+            Alugado = true;
+        }
+
+        public static void Desocupar()
+        {
+            Alugado = false;
+        }
     }
 }
