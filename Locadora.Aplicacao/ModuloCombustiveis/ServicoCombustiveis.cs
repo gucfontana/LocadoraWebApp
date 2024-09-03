@@ -7,24 +7,23 @@ namespace Locadora.Aplicacao.ModuloCombustiveis
     {
         private readonly IRepositorioCombustiveis repositorioConfig;
 
-        public ServicoCombustiveis
-        (
-            IRepositorioCombustiveis repositorioConfig
-        )
+        public ServicoCombustiveis(IRepositorioCombustiveis repositorioConfig)
         {
             this.repositorioConfig = repositorioConfig;
         }
 
-        public async Task<Result> SalvarConfiguracaoAsync(Combustiveis configuracao)
+        public Result SalvarConfiguracao(Combustiveis configuracao)
         {
-            await repositorioConfig.GravarConfiguracaoCombustiveis(configuracao);
+            configuracao.DataCriacao = DateTime.Now;
+
+            repositorioConfig.GravarConfiguracao(configuracao);
 
             return Result.Ok();
         }
 
-        public async Task<Result<Combustiveis>> ObterConfiguracaoAsync()
+        public Result<Combustiveis> ObterConfiguracao()
         {
-            var config = await repositorioConfig.ObterConfiguracaoCombustiveis();
+            var config = repositorioConfig.ObterConfiguracao();
 
             if (config is null)
             {

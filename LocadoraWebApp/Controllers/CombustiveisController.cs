@@ -1,35 +1,41 @@
+using AutoMapper;
 using Locadora.Aplicacao.ModuloCombustiveis;
 using Locadora.Dominio.ModuloCombustiveis;
 using LocadoraWebApp.Controllers.Compartilhado;
+using LocadoraWebApp.Models;
 using Microsoft.AspNetCore.Mvc;
-
-namespace LocadoraWebApp.Controllers;
 
 public class CombustiveisController : WebControllerBase
 {
-    private readonly ServicoCombustiveis servicoCombustiveis;
-    
-    public CombustiveisController(ServicoCombustiveis servicoCombustiveis)
+    private readonly ServicoCombustiveis servicoCombustivel;
+    private readonly IMapper mapeador;
+
+    public CombustiveisController(ServicoCombustiveis servicoCombustivel, IMapper mapeador)
     {
-        this.servicoCombustiveis = servicoCombustiveis;
+        this.servicoCombustivel = servicoCombustivel;
+        this.mapeador = mapeador;
     }
-    
-    public async Task<IActionResult> Configurar()
+
+    public IActionResult Configurar()
     {
-        var resultado = await servicoCombustiveis.ObterConfiguracaoAsync();
-        
+        var resultado = servicoCombustivel.ObterConfiguracao();
+
         if (resultado.IsFailed)
             return RedirectToAction("Index", "Home");
-        
-        Combustiveis configuracaoCombustiveis = resultado.Value;
-        
-        return View(configuracaoCombustiveis);
+
+        var configuracaoCombustivel = resultado.Value;
+
+        var formularioVm = mapeador.Map<FormularioCombustiveisViewModel>(configuracaoCombustivel);
+
+        return View(formularioVm);
     }
 
     [HttpPost]
-    public async Task<IActionResult> Configurar(Combustiveis config)
+    public IActionResult Configurar(FormularioCombustiveisViewModel formularioVm)
     {
-        var resultado = await servicoCombustiveis.SalvarConfiguracaoAsync(config);
+        var config = mapeador.Map<Combustiveis>(formularioVm);
+
+        var resultado = servicoCombustivel.SalvarConfiguracao(config);
 
         if (resultado.IsFailed)
             return RedirectToAction("Index", "Home");
@@ -39,4 +45,3 @@ public class CombustiveisController : WebControllerBase
         return RedirectToAction("Index", "Home");
     }
 }
-

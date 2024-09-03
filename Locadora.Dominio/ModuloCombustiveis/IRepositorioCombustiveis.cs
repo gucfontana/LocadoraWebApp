@@ -2,7 +2,7 @@ namespace Locadora.Dominio.ModuloCombustiveis
 {
     public interface IRepositorioCombustiveis
     {
-        Task GravarConfiguracaoCombustiveis(Combustiveis configCombustiveis);
-        Task<Combustiveis ?> ObterConfiguracaoCombustiveis();
+        void GravarConfiguracao(Combustiveis configuracao);
+        Combustiveis ObterConfiguracao();
     }
 }

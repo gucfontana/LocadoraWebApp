@@ -2,22 +2,31 @@ namespace Locadora.Dominio.ModuloCombustiveis
 {
     public class Combustiveis
     {
-        public decimal ValorAlcool { get; set; }
-        public decimal ValorDiesel { get; set; }
-        public decimal ValorGas { get; set; }
+        public int Id { get; set; }
+        public DateTime DataCriacao { get; set; }
+
         public decimal ValorGasolina { get; set; }
+        public decimal ValorGas { get; set; }
+        public decimal ValorDiesel { get; set; }
+        public decimal ValorAlcool { get; set; }
 
-        public Combustiveis() {} // frameworks
+        protected Combustiveis() {}
 
-        public Combustiveis(decimal valorAlcool, decimal valorDiesel, decimal valorGas, decimal valorGasolina) : this()
+        public Combustiveis
+        (
+            decimal valorGasolina,
+            decimal valorGas,
+            decimal valorDiesel,
+            decimal valorAlcool
+        ) : this()
         {
-            ValorAlcool = valorAlcool;
-            ValorDiesel = valorDiesel;
-            ValorGas = valorGas;
             ValorGasolina = valorGasolina;
+            ValorGas = valorGas;
+            ValorDiesel = valorDiesel;
+            ValorAlcool = valorAlcool;
         }
 
-        public decimal ObterValorCombustiveis(TipoCombustivelEnum tipoCombustivel)
+        public decimal ObterValorCombustivel(TipoCombustivelEnum tipoCombustivel)
         {
             return tipoCombustivel switch
             {

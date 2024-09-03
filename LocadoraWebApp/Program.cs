@@ -14,8 +14,8 @@ using Locadora.Dominio.ModuloPlanoCobrancas;
 using Locadora.Dominio.ModuloTaxas;
 using Locadora.Dominio.ModuloVeiculos;
 using Locadora.Infra.Compartilhado;
-using Locadora.Infra.IO.ModuloCombustiveis;
 using Locadora.Infra.ModuloClientes;
+using Locadora.Infra.ModuloCombustiveis;
 using Locadora.Infra.ModuloCondutores;
 using Locadora.Infra.ModuloGrupoVeiculos;
 using Locadora.Infra.ModuloPlanoCobrancas;
@@ -30,21 +30,19 @@ namespace LocadoraWebApp
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            
-            builder.Services.AddScoped<IRepositorioCombustiveis, RepositorioCombustiveis>();
-            builder.Services.AddScoped<ServicoCombustiveis>();
-            
+
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddDbContext<LocadoraDbContext>();
 
             // repositorios
-             builder.Services.AddScoped<IRepositorioGrupoVeiculos, RepositorioGrupoVeiculosOrm>();
-             builder.Services.AddScoped<IRepositorioVeiculos, RepositorioVeiculosOrm>();
-             builder.Services.AddScoped<IRepositorioPlanoCobrancas, RepositorioPlanoCobrancasOrm>();
-             builder.Services.AddScoped<IRepositorioTaxas, RepositorioTaxasOrm>();
-             builder.Services.AddScoped<IRepositorioClientes, RepositorioClientesOrm>();
-             builder.Services.AddScoped<IRepositorioCondutores, RepositorioCondutoresOrm>();
+            builder.Services.AddScoped<IRepositorioGrupoVeiculos, RepositorioGrupoVeiculosOrm>();
+            builder.Services.AddScoped<IRepositorioVeiculos, RepositorioVeiculosOrm>();
+            builder.Services.AddScoped<IRepositorioPlanoCobrancas, RepositorioPlanoCobrancasOrm>();
+            builder.Services.AddScoped<IRepositorioTaxas, RepositorioTaxasOrm>();
+            builder.Services.AddScoped<IRepositorioClientes, RepositorioClientesOrm>();
+            builder.Services.AddScoped<IRepositorioCondutores, RepositorioCondutoresOrm>();
+            builder.Services.AddScoped<IRepositorioCombustiveis, RepositorioCombustiveisOrm>();
 
 
             // servicos
