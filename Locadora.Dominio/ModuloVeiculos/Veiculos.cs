@@ -8,16 +8,18 @@ using Locadora.Dominio.ModuloGrupoVeiculos;
 
 namespace Locadora.Dominio.ModuloVeiculos
 {
-    public class Veiculos : EntidadeBase 
+    public class Veiculos : EntidadeBase
     {
         // Propriedades
-public string Modelo { get; set; }
+        public string Modelo { get; set; }
         public string Marca { get; set; }
         public TipoCombustivel TipoCombustivel { get; set; }
         public int CapacidadeTanque { get; set; }
         public int GrupoVeiculosId { get; set; }
         public GrupoVeiculos ? GrupoVeiculos { get; set; }
         public byte[] Fotos { get; set; }
+        
+        public bool Alugado { get; set; }
 
         // Construtores
         protected Veiculos() {}
@@ -49,6 +51,16 @@ public string Modelo { get; set; }
                 erros.Add("Grupo de veículos é obrigatório");
 
             return erros;
+        }
+
+        public void Alugar()
+        {
+            Alugado = true;
+        }
+
+        public void Entregar()
+        {
+            Alugado = false;
         }
     }
 }
