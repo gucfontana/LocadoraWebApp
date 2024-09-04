@@ -93,5 +93,10 @@ namespace Locadora.Dominio.ModuloAlugueis
 
             return erros;
         }
+
+        public void RealizarDevolucao()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

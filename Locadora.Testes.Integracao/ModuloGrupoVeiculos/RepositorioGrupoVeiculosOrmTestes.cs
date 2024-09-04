@@ -27,12 +27,12 @@ namespace Locadora.Testes.Integracao.ModuloGrupoVeiculos
         [TestMethod]
         public void Deve_Inserir_GrupoVeiculos()
         {
-            var grupo = Builder<GrupoVeiculos>
+            GrupoVeiculos ? grupo = Builder<GrupoVeiculos>
                 .CreateNew()
                 .With(g => g.Id, 0)
                 .Persist();
 
-            var grupoSelecionado = repositorio.SelecionarPorId(grupo.Id);
+            GrupoVeiculos ? grupoSelecionado = repositorio.SelecionarPorId(grupo.Id);
 
             Assert.IsNotNull(grupoSelecionado);
             Assert.AreEqual(grupo, grupoSelecionado);
@@ -41,14 +41,14 @@ namespace Locadora.Testes.Integracao.ModuloGrupoVeiculos
         [TestMethod]
         public void Deve_Editar_GrupoVeiculos()
         {
-            var grupo = Builder<GrupoVeiculos>
+            GrupoVeiculos ? grupo = Builder<GrupoVeiculos>
                 .CreateNew()
                 .Persist();
 
             grupo.Nome = "Teste de Edição";
             repositorio.Editar(grupo);
 
-            var grupoSelecionado = repositorio.SelecionarPorId(grupo.Id);
+            GrupoVeiculos ? grupoSelecionado = repositorio.SelecionarPorId(grupo.Id);
 
             Assert.IsNotNull(grupoSelecionado);
             Assert.AreEqual(grupo, grupoSelecionado);
@@ -57,15 +57,15 @@ namespace Locadora.Testes.Integracao.ModuloGrupoVeiculos
         [TestMethod]
         public void Deve_Excluir_GrupoVeiculos()
         {
-            var grupo = Builder<GrupoVeiculos>
+            GrupoVeiculos ? grupo = Builder<GrupoVeiculos>
                 .CreateNew()
                 .Persist();
 
             repositorio.Excluir(grupo);
 
-            var grupoSelecionado = repositorio.SelecionarPorId(grupo.Id);
+            GrupoVeiculos ? grupoSelecionado = repositorio.SelecionarPorId(grupo.Id);
 
-            var grupos = repositorio.SelecionarTodos();
+            List<GrupoVeiculos> grupos = repositorio.SelecionarTodos();
 
             Assert.IsNull(grupoSelecionado);
             Assert.AreEqual(0, grupos.Count);

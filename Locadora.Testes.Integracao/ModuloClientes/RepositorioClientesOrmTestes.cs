@@ -11,14 +11,14 @@ namespace Locadora.Testes.Integracao.ModuloClientes
         [TestMethod]
         public void DeveInserirClientes()
         {
-            var cliente = Builder<Clientes>
+            Clientes ? cliente = Builder<Clientes>
                 .CreateNew()
                 .With(c => c.Id = 0)
                 .Build();
 
             repositorioCliente.Inserir(cliente);
 
-            var clienteSelecionado = repositorioCliente.SelecionarPorId(cliente.Id);
+            Clientes ? clienteSelecionado = repositorioCliente.SelecionarPorId(cliente.Id);
 
             Assert.IsNotNull(clienteSelecionado);
             Assert.AreEqual(cliente, clienteSelecionado);
@@ -27,7 +27,7 @@ namespace Locadora.Testes.Integracao.ModuloClientes
         [TestMethod]
         public void DeveEditarClientes()
         {
-            var cliente = Builder<Clientes>
+            Clientes ? cliente = Builder<Clientes>
                 .CreateNew()
                 .With(c => c.Id = 0)
                 .Persist();
@@ -37,7 +37,7 @@ namespace Locadora.Testes.Integracao.ModuloClientes
 
             repositorioCliente.Editar(cliente);
 
-            var clienteSelecionado = repositorioCliente.SelecionarPorId(cliente.Id);
+            Clientes ? clienteSelecionado = repositorioCliente.SelecionarPorId(cliente.Id);
 
             Assert.IsNotNull(clienteSelecionado);
             Assert.AreEqual(cliente, clienteSelecionado);
@@ -46,16 +46,16 @@ namespace Locadora.Testes.Integracao.ModuloClientes
         [TestMethod]
         public void DeveExcluirClientes()
         {
-            var cliente = Builder<Clientes>
+            Clientes ? cliente = Builder<Clientes>
                 .CreateNew()
                 .With(c => c.Id = 0)
                 .Persist();
 
             repositorioCliente.Excluir(cliente);
 
-            var clienteSelecionado = repositorioCliente.SelecionarPorId(cliente.Id);
+            Clientes ? clienteSelecionado = repositorioCliente.SelecionarPorId(cliente.Id);
 
-            var clientes = repositorioCliente.SelecionarTodos();
+            List<Clientes> ? clientes = repositorioCliente.SelecionarTodos();
 
             Assert.IsNull(clienteSelecionado);
             Assert.AreEqual(0, clientes.Count);

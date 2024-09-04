@@ -12,12 +12,12 @@ namespace Locadora.Testes.Integracao.ModuloCondutores
         [TestMethod]
         public void DeveInserirCondutor()
         {
-            var cliente = Builder<Clientes>
+            Clientes ? cliente = Builder<Clientes>
                 .CreateNew()
                 .With(c => c.Id = 0)
                 .Persist();
 
-            var condutor = Builder<Condutores>
+            Condutores ? condutor = Builder<Condutores>
                 .CreateNew()
                 .With(c => c.Id = 0)
                 .With(c => c.ClienteId = cliente.Id)
@@ -25,7 +25,7 @@ namespace Locadora.Testes.Integracao.ModuloCondutores
 
             repositorioCondutor.Inserir(condutor);
 
-            var condutorSelecionado = repositorioCondutor.SelecionarPorId(condutor.Id);
+            Condutores ? condutorSelecionado = repositorioCondutor.SelecionarPorId(condutor.Id);
 
             Assert.IsNotNull(condutorSelecionado);
             Assert.AreEqual(condutor, condutorSelecionado);
@@ -34,12 +34,12 @@ namespace Locadora.Testes.Integracao.ModuloCondutores
         [TestMethod]
         public void DeveEditarCondutor()
         {
-            var cliente = Builder<Clientes>
+            Clientes ? cliente = Builder<Clientes>
                 .CreateNew()
                 .With(c => c.Id = 0)
                 .Persist();
 
-            var condutor = Builder<Condutores>
+            Condutores ? condutor = Builder<Condutores>
                 .CreateNew()
                 .With(c => c.Id = 0)
                 .With(c => c.ClienteId = cliente.Id)
@@ -50,7 +50,7 @@ namespace Locadora.Testes.Integracao.ModuloCondutores
 
             repositorioCondutor.Editar(condutor);
 
-            var condutorSelecionado = repositorioCondutor.SelecionarPorId(condutor.Id);
+            Condutores ? condutorSelecionado = repositorioCondutor.SelecionarPorId(condutor.Id);
 
             Assert.IsNotNull(condutorSelecionado);
             Assert.AreEqual(condutor, condutorSelecionado);
@@ -59,12 +59,12 @@ namespace Locadora.Testes.Integracao.ModuloCondutores
         [TestMethod]
         public void DeveExcluirCondutor()
         {
-            var cliente = Builder<Clientes>
+            Clientes ? cliente = Builder<Clientes>
                 .CreateNew()
                 .With(c => c.Id = 0)
                 .Persist();
 
-            var condutor = Builder<Condutores>
+            Condutores ? condutor = Builder<Condutores>
                 .CreateNew()
                 .With(c => c.Id = 0)
                 .With(c => c.ClienteId = cliente.Id)
@@ -72,9 +72,9 @@ namespace Locadora.Testes.Integracao.ModuloCondutores
 
             repositorioCondutor.Excluir(condutor);
 
-            var condutorSelecionado = repositorioCondutor.SelecionarPorId(condutor.Id);
+            Condutores ? condutorSelecionado = repositorioCondutor.SelecionarPorId(condutor.Id);
 
-            var condutores = repositorioCondutor.SelecionarTodos();
+            List<Condutores> ? condutores = repositorioCondutor.SelecionarTodos();
 
             Assert.IsNull(condutorSelecionado);
             Assert.AreEqual(0, condutores.Count);

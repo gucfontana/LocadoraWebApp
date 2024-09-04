@@ -1,4 +1,5 @@
 using FizzWare.NBuilder;
+using Locadora.Dominio.ModuloAlugueis;
 using Locadora.Dominio.ModuloClientes;
 using Locadora.Dominio.ModuloCondutores;
 using Locadora.Dominio.ModuloGrupoVeiculos;
@@ -6,6 +7,7 @@ using Locadora.Dominio.ModuloPlanoCobrancas;
 using Locadora.Dominio.ModuloTaxas;
 using Locadora.Dominio.ModuloVeiculos;
 using Locadora.Infra.Compartilhado;
+using Locadora.Infra.ModuloAlugueis;
 using Locadora.Infra.ModuloClientes;
 using Locadora.Infra.ModuloCondutores;
 using Locadora.Infra.ModuloGrupoVeiculos;
@@ -24,6 +26,7 @@ namespace Locadora.Testes.Integracao.Compartilhado
         protected RepositorioGrupoVeiculosOrm repositorioGrupo;
         protected RepositorioPlanoCobrancasOrm repositorioPlano;
         protected RepositorioCondutoresOrm repositorioCondutor;
+        protected RepositorioAlugueisOrm repositorioLocacoes;
 
         [TestInitialize]
         public void Inicializar()
@@ -36,6 +39,7 @@ namespace Locadora.Testes.Integracao.Compartilhado
             dbContext.Veiculos.RemoveRange(dbContext.Veiculos);
             dbContext.GrupoVeiculos.RemoveRange(dbContext.GrupoVeiculos);
             dbContext.Condutores.RemoveRange(dbContext.Condutores);
+            dbContext.Locacoes.RemoveRange(dbContext.Locacoes);
 
             dbContext.SaveChanges();
 
@@ -45,6 +49,7 @@ namespace Locadora.Testes.Integracao.Compartilhado
             repositorioVeiculo = new RepositorioVeiculosOrm(dbContext);
             repositorioGrupo = new RepositorioGrupoVeiculosOrm(dbContext);
             repositorioCondutor = new RepositorioCondutoresOrm(dbContext);
+            repositorioLocacoes = new RepositorioAlugueisOrm(dbContext);
 
             BuilderSetup.SetCreatePersistenceMethod<Taxas>(repositorioTaxa.Inserir);
             BuilderSetup.SetCreatePersistenceMethod<PlanoCobrancas>(repositorioPlano.Inserir);
@@ -52,6 +57,7 @@ namespace Locadora.Testes.Integracao.Compartilhado
             BuilderSetup.SetCreatePersistenceMethod<Veiculos>(repositorioVeiculo.Inserir);
             BuilderSetup.SetCreatePersistenceMethod<GrupoVeiculos>(repositorioGrupo.Inserir);
             BuilderSetup.SetCreatePersistenceMethod<Condutores>(repositorioCondutor.Inserir);
+            BuilderSetup.SetCreatePersistenceMethod<Alugueis>(repositorioLocacoes.Inserir);
         }
     }
 }

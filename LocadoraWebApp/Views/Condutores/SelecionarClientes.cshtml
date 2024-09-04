@@ -1,4 +1,4 @@
-@model LocadoraWebApp.Models.FormularioCondutoresViewModel
+@model LocadoraWebApp.Models.SelecionarClientesViewModel
 
 @{
     ViewBag.Title = "Inserir Novo Condutor";
@@ -14,9 +14,9 @@
             </div>
 
             <div class="form-check">
-                <input class="form-check-input mb-1" type="checkbox" asp-for="ClienteCondutor"/>
+                <input class="form-check-input mb-1" type="checkbox" asp-for="ClienteCondutores"/>
                 <label class="form-check-label fw-semibold mb-1">O cliente será o condutor</label>
-                <span class="text-danger fs-6" asp-validation-for="ClienteCondutor"></span>
+                <span class="text-danger fs-6" asp-validation-for="ClienteCondutores"></span>
             </div>
 
             <div class="d-grid gap-2 d-md-block mt-4">

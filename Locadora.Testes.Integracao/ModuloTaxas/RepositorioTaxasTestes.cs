@@ -27,18 +27,18 @@ namespace Locadora.Testes.Integracao.ModuloTaxas
         [TestMethod]
         public void DeveInserirTaxa()
         {
-            var taxa = Builder<Taxas>
+            Taxas ? taxa = Builder<Taxas>
                 .CreateNew()
                 .With(t => t.Id = 0)
                 .With(t => t.Nome = "Taxa de servico")
                 .With(t => t.Valor = 50.0m)
                 .With(t => t.TipoCobranca = Taxas.TipoCobrancaEnum.Diaria)
                 .Build();
-            
+
             repositorio.Inserir(taxa);
 
-            var taxaSelecionada = repositorio.SelecionarPorId(taxa.Id);
-            
+            Taxas ? taxaSelecionada = repositorio.SelecionarPorId(taxa.Id);
+
             Assert.IsNotNull(taxaSelecionada);
             Assert.AreEqual(taxa, taxaSelecionada);
         }
@@ -46,7 +46,7 @@ namespace Locadora.Testes.Integracao.ModuloTaxas
         [TestMethod]
         public void DeveEditarTaxa()
         {
-            var taxa = Builder<Taxas>
+            Taxas ? taxa = Builder<Taxas>
                 .CreateNew()
                 .With(t => t.Id = 0)
                 .Persist();
@@ -56,7 +56,7 @@ namespace Locadora.Testes.Integracao.ModuloTaxas
 
             repositorio.Editar(taxa);
 
-            var taxaSelecionada = repositorio.SelecionarPorId(taxa.Id);
+            Taxas ? taxaSelecionada = repositorio.SelecionarPorId(taxa.Id);
 
             Assert.IsNotNull(taxaSelecionada);
             Assert.AreEqual(taxa, taxaSelecionada);
@@ -65,19 +65,19 @@ namespace Locadora.Testes.Integracao.ModuloTaxas
         [TestMethod]
         public void DeveExcluirTaxa()
         {
-            var taxa = Builder<Taxas>
+            Taxas ? taxa = Builder<Taxas>
                 .CreateNew()
                 .With(t => t.Id = 0)
                 .Persist();
 
             repositorio.Excluir(taxa);
 
-            var taxaSelecionada = repositorio.SelecionarPorId(taxa.Id);
+            Taxas ? taxaSelecionada = repositorio.SelecionarPorId(taxa.Id);
 
-            var taxas = repositorio.SelecionarTodos();
+            List<Taxas> ? taxas = repositorio.SelecionarTodos();
 
             Assert.IsNull(taxaSelecionada);
             Assert.AreEqual(0, taxas.Count);
         }
-}
+    }
 }

@@ -39,12 +39,12 @@ namespace Locadora.Testes.Integracao.ModuloPlanoCobrancas
         [TestMethod]
         public void DeveInserirPlanoCobrancas()
         {
-            var grupo = Builder<GrupoVeiculos>
+            GrupoVeiculos ? grupo = Builder<GrupoVeiculos>
                 .CreateNew()
                 .With(g => g.Id = 0)
                 .Persist();
 
-            var planoCobrancas = Builder<PlanoCobrancas>
+            PlanoCobrancas ? planoCobrancas = Builder<PlanoCobrancas>
                 .CreateNew()
                 .With(p => p.Id = 0)
                 .With(p => p.GrupoVeiculosId = grupo.Id)
@@ -52,7 +52,7 @@ namespace Locadora.Testes.Integracao.ModuloPlanoCobrancas
 
             repositorio.Inserir(planoCobrancas);
 
-            var planoCobrancasInserido = repositorio.SelecionarPorId(planoCobrancas.Id);
+            PlanoCobrancas ? planoCobrancasInserido = repositorio.SelecionarPorId(planoCobrancas.Id);
 
             Assert.IsNotNull(planoCobrancasInserido);
             Assert.AreEqual(planoCobrancas, planoCobrancasInserido);
@@ -61,12 +61,12 @@ namespace Locadora.Testes.Integracao.ModuloPlanoCobrancas
         [TestMethod]
         public void DeveEditarPlanoCobrancas()
         {
-            var grupo = Builder<GrupoVeiculos>
+            GrupoVeiculos ? grupo = Builder<GrupoVeiculos>
                 .CreateNew()
                 .With(g => g.Id = 0)
                 .Persist();
 
-            var planoCobrancas = Builder<PlanoCobrancas>
+            PlanoCobrancas ? planoCobrancas = Builder<PlanoCobrancas>
                 .CreateNew()
                 .With(p => p.Id = 0)
                 .With(p => p.GrupoVeiculosId = grupo.Id)
@@ -76,7 +76,7 @@ namespace Locadora.Testes.Integracao.ModuloPlanoCobrancas
 
             repositorio.Editar(planoCobrancas);
 
-            var planoCobrancasEditado = repositorio.SelecionarPorId(planoCobrancas.Id);
+            PlanoCobrancas ? planoCobrancasEditado = repositorio.SelecionarPorId(planoCobrancas.Id);
 
             Assert.IsNotNull(planoCobrancasEditado);
             Assert.AreEqual(planoCobrancas, planoCobrancasEditado);
@@ -85,12 +85,12 @@ namespace Locadora.Testes.Integracao.ModuloPlanoCobrancas
         [TestMethod]
         public void DeveExcluirPlanoCobrancas()
         {
-var grupo = Builder<GrupoVeiculos>
-    .CreateNew()
+            GrupoVeiculos ? grupo = Builder<GrupoVeiculos>
+                .CreateNew()
                 .With(g => g.Id = 0)
                 .Persist();
 
-            var planoCobrancas = Builder<PlanoCobrancas>
+            PlanoCobrancas ? planoCobrancas = Builder<PlanoCobrancas>
                 .CreateNew()
                 .With(p => p.Id = 0)
                 .With(p => p.GrupoVeiculosId = grupo.Id)
@@ -98,13 +98,12 @@ var grupo = Builder<GrupoVeiculos>
 
             repositorio.Excluir(planoCobrancas);
 
-            var planoCobrancasExcluido = repositorio.SelecionarPorId(planoCobrancas.Id);
+            PlanoCobrancas ? planoCobrancasExcluido = repositorio.SelecionarPorId(planoCobrancas.Id);
 
-var planosCobrancas = repositorio.SelecionarTodos();
+            List<PlanoCobrancas> ? planosCobrancas = repositorio.SelecionarTodos();
 
             Assert.IsNull(planoCobrancasExcluido);
             Assert.AreEqual(0, planosCobrancas.Count);
         }
-}
     }
-
+}

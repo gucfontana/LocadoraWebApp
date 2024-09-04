@@ -1,4 +1,5 @@
 using Locadora.Dominio.Compartilhado;
+using Locadora.Dominio.ModuloAlugueis;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace Locadora.Dominio.ModuloTaxas
@@ -9,9 +10,11 @@ namespace Locadora.Dominio.ModuloTaxas
         public string ? Nome { get; set; }
         public decimal Valor { get; set; }
         public TipoCobrancaEnum TipoCobranca { get; set; }
+        public IEnumerable<Alugueis> ? Locacoes { get; set; }
 
         protected Taxas()
         {
+            Locacoes = new List<Alugueis>();
         }
 
         public Taxas(string nome, decimal valor, TipoCobrancaEnum tipoCobranca) : this()

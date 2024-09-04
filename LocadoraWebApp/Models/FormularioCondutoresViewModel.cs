@@ -20,7 +20,7 @@ namespace LocadoraWebApp.Models
         [Required(ErrorMessage = "O cliente é obrigatório")]
         public int ClienteId { get; set; }
 
-        public bool ClienteCondutor { get; set; }
+        public bool ClienteCondutores { get; set; }
 
         [Required(ErrorMessage = "O nome é obrigatório")]
         [MinLength(3, ErrorMessage = "O nome deve conter ao menos 3 caracteres")]

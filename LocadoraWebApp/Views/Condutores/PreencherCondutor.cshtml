@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = $"Inserir Condutor para {ViewBag.ClienteSelecionado}";
 
-    var campoSomenteLeitura = Model.ClienteCondutor;
+    var campoSomenteLeitura = Model.ClienteCondutores;
 }
 
 <div class="col">
@@ -18,10 +18,10 @@
 
                 <div class="col">
                     <div class="form-check">
-                        <input class="form-check-input mb-1" type="checkbox" asp-for="ClienteCondutor" disabled/>
-                        <input class="form-check-input mb-1" type="checkbox" asp-for="ClienteCondutor" hidden/>
+                        <input class="form-check-input mb-1" type="checkbox" asp-for="ClienteCondutores" disabled/>
+                        <input class="form-check-input mb-1" type="checkbox" asp-for="ClienteCondutores" hidden/>
                         <label class="form-check-label fw-semibold mb-1">O cliente será o condutor</label>
-                        <span class="text-danger fs-6" asp-validation-for="ClienteCondutor"></span>
+                        <span class="text-danger fs-6" asp-validation-for="ClienteCondutores"></span>
                     </div>
                 </div>
             </div>
@@ -69,7 +69,7 @@
                     Gravar
                 </button>
 
-                <a class="btn btn-outline-primary px-5" asp-action="Listar">
+                <a class="btn btn-outline-primary px-5" asp-controller="Condutores" asp-action="Listar">
                     <i class="bi bi-arrow-return-left me-1"></i>
                     Voltar
                 </a>

@@ -86,7 +86,7 @@ namespace LocadoraWebApp.Controllers
         if (clienteCondutor)
         {
             viewModel.ClienteId = clienteId;
-            viewModel.ClienteCondutor = clienteCondutor;
+            viewModel.ClienteCondutores = clienteCondutor;
             viewModel.Nome = cliente.Nome;
             viewModel.Email = cliente.Email;
             viewModel.Telefone = cliente.Telefone;
