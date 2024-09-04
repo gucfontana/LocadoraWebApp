@@ -34,7 +34,7 @@ namespace Locadora.Infra.Migrations
 
                     b.HasIndex("TaxasSelecionadasId");
 
-                    b.ToTable("AlugueisTaxas");
+                    b.ToTable("TBAlugueisTaxas", (string)null);
                 });
 
             modelBuilder.Entity("Locadora.Dominio.ModuloAlugueis.Alugueis", b =>
@@ -44,9 +44,6 @@ namespace Locadora.Infra.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int?>("CombustiveisId")
-                        .HasColumnType("int");
 
                     b.Property<int>("CombustivelId")
                         .HasColumnType("int");
@@ -73,17 +70,17 @@ namespace Locadora.Infra.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("VeiculoId")
-                        .HasColumnType("Id");
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CombustiveisId");
+                    b.HasIndex("CombustivelId");
 
                     b.HasIndex("CondutorId");
 
                     b.HasIndex("VeiculoId");
 
-                    b.ToTable("Locacoes");
+                    b.ToTable("TBAlugueis", (string)null);
                 });
 
             modelBuilder.Entity("Locadora.Dominio.ModuloClientes.Clientes", b =>
@@ -326,7 +323,7 @@ namespace Locadora.Infra.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("Id")
+                        .HasColumnType("int")
                         .HasColumnName("Id");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
@@ -389,18 +386,20 @@ namespace Locadora.Infra.Migrations
                 {
                     b.HasOne("Locadora.Dominio.ModuloCombustiveis.Combustiveis", "Combustiveis")
                         .WithMany()
-                        .HasForeignKey("CombustiveisId");
+                        .HasForeignKey("CombustivelId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("Locadora.Dominio.ModuloCondutores.Condutores", "Condutor")
                         .WithMany()
                         .HasForeignKey("CondutorId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Locadora.Dominio.ModuloVeiculos.Veiculos", "Veiculo")
                         .WithMany()
                         .HasForeignKey("VeiculoId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Combustiveis");

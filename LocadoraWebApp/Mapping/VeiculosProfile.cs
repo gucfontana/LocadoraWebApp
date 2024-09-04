@@ -28,7 +28,7 @@ namespace LocadoraWebApp.Mapping
                 );
 
             CreateMap<Veiculos, EditarVeiculosViewModel>()
-                .ForMember(v => v.GrupoVeiculos, opt => opt.MapFrom<GrupoVeiculosResolver>());
+                .ForMember(v => v.GrupoVeiculos, opt => opt.MapFrom<GrupoVeiculosValueResolver>());
         }
     }
 }

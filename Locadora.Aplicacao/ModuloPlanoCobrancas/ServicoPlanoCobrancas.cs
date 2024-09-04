@@ -68,5 +68,15 @@ namespace Locadora.Aplicacao.ModuloPlanoCobrancas
 
             return Result.Ok(planosCobranca);
         }
-}
+
+        public Result<PlanoCobrancas> SelecionarPorIdGrupoVeiculos(int grupoVeiculosId)
+        {
+            var plano = repositorioPlanoCobrancas.FiltrarPlano(p => p.GrupoVeiculosId == grupoVeiculosId);
+
+            if (plano is null)
+                return Result.Fail("O plano de cobrança não foi encontrado!");
+
+            return Result.Ok(plano);
+        }
+    }
 }

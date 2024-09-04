@@ -1,4 +1,5 @@
 ﻿using Locadora.Dominio.Compartilhado;
+using Locadora.Dominio.ModuloAlugueis;
 using Locadora.Dominio.ModuloGrupoVeiculos;
 
 namespace Locadora.Dominio.ModuloPlanoCobrancas
@@ -44,6 +45,44 @@ namespace Locadora.Dominio.ModuloPlanoCobrancas
                 erros.Add("Grupo de veículos é obrigatório");
 
             return erros;
+        }
+
+        public decimal CalcularValor(int quantidadeDeDias, int quilometragemPercorrida, TipoPlanoCobrancaEnum tipoPlano)
+        {
+            decimal valor = 0.0m;
+
+            switch (tipoPlano)
+            {
+                case TipoPlanoCobrancaEnum.Diario:
+                    decimal valorDiasPlanoDiario = quantidadeDeDias * ValorDiario;
+
+                    decimal valorQuilometragemPercorridaPlanoDiario =
+                        quilometragemPercorrida * ValorDiarioKmLivre;
+
+                    valor = valorDiasPlanoDiario + valorQuilometragemPercorridaPlanoDiario;
+                    break;
+
+                case TipoPlanoCobrancaEnum.KmControlado:
+                    decimal valorDiasPlanoControlado = quantidadeDeDias * ValorDiarioControlado;
+
+                    decimal quilometrosExtrapolados =
+                        quilometragemPercorrida - ValorKmControlado;
+
+                    decimal valorQuilometragemPlanoControlado =
+                        quilometrosExtrapolados * ValorKmExcedido;
+
+                    valor = valorDiasPlanoControlado;
+
+                    if (quilometrosExtrapolados > 0) valor += valorQuilometragemPlanoControlado;
+                    break;
+
+                case TipoPlanoCobrancaEnum.KmLivre:
+                    valor = quantidadeDeDias * ValorDiarioKmLivre;
+                    break;
+            }
+            
+            return valor;
+            
         }
     }
 }

@@ -77,7 +77,7 @@ namespace LocadoraWebApp.Controllers
         var clienteResult = servicoCliente.SelecionarPorId(clienteId);
 
         if (clienteResult.IsFailed)
-            return RedirectToAction("SelecionarCliente");
+            return RedirectToAction("SelecionarClientes");
 
         var cliente = clienteResult.Value;
 

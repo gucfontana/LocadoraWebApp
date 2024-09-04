@@ -23,7 +23,7 @@ namespace LocadoraWebApp.Mapping
                     opt => opt.MapFrom(src => src.GrupoVeiculos!.Nome));
 
             CreateMap<PlanoCobrancas, EditarPlanoCobrancasViewModel>()
-                .ForMember(dest => dest.GruposVeiculos, opt => opt.MapFrom<GrupoVeiculosResolver>());
+                .ForMember(dest => dest.GruposVeiculos, opt => opt.MapFrom<GrupoVeiculosValueResolver>());
         }
     }
 }

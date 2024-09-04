@@ -7,21 +7,20 @@ namespace Locadora.Infra.ModuloVeiculos
 {
     public class MapeadorVeiculos : IEntityTypeConfiguration<Veiculos>
     {
-
         public void Configure(EntityTypeBuilder<Veiculos> builder)
         {
             builder.ToTable("TBVeiculos");
 
-builder.Property(v => v.Id)
-    .HasColumnName("Id")
-    .HasColumnType("Id")
-    .ValueGeneratedOnAdd()
-    .IsRequired();
+            builder.Property(v => v.Id)
+                .HasColumnName("Id")
+                .HasColumnType("int")
+                .ValueGeneratedOnAdd()
+                .IsRequired();
 
-builder.Property(v => v.Modelo)
-    .HasColumnName("Modelo")
-    .HasColumnType("varchar(100)")
-    .IsRequired();
+            builder.Property(v => v.Modelo)
+                .HasColumnName("Modelo")
+                .HasColumnType("varchar(100)")
+                .IsRequired();
 
             builder.Property(v => v.Marca)
                 .HasColumnName("Marca")

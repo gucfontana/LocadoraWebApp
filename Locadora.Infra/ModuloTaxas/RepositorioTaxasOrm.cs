@@ -10,5 +10,10 @@ namespace Locadora.Infra.ModuloTaxas
         {
             return dbContext.Taxas;
         }
+
+        public List<Taxas> SelecionarMuitos(List<int> idsTaxasSelecionadas)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

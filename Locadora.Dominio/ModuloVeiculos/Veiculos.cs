@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Locadora.Dominio.Compartilhado;
+using Locadora.Dominio.ModuloAlugueis;
+using Locadora.Dominio.ModuloCombustiveis;
 using Locadora.Dominio.ModuloGrupoVeiculos;
 
 namespace Locadora.Dominio.ModuloVeiculos
@@ -13,12 +15,12 @@ namespace Locadora.Dominio.ModuloVeiculos
         // Propriedades
         public string Modelo { get; set; }
         public string Marca { get; set; }
-        public TipoCombustivel TipoCombustivel { get; set; }
+        public TipoCombustivelEnum TipoCombustivel { get; set; }
         public int CapacidadeTanque { get; set; }
         public int GrupoVeiculosId { get; set; }
         public GrupoVeiculos ? GrupoVeiculos { get; set; }
         public byte[] Fotos { get; set; }
-        
+
         public bool Alugado { get; set; }
 
         // Construtores
@@ -28,7 +30,7 @@ namespace Locadora.Dominio.ModuloVeiculos
         {
             Modelo = modelo;
             Marca = marca;
-            TipoCombustivel = tipoCombustivel;
+            TipoCombustivel = (TipoCombustivelEnum)tipoCombustivel;
             CapacidadeTanque = capacidadeTanque;
             GrupoVeiculosId = grupoVeiculosId;
         }
@@ -61,6 +63,21 @@ namespace Locadora.Dominio.ModuloVeiculos
         public void Entregar()
         {
             Alugado = false;
+        }
+
+        public object CalcularLitrosParaAbastecimento(MarcadorCombustivelEnum marcadorCombustivel)
+        {
+            switch (marcadorCombustivel)
+            {
+                case MarcadorCombustivelEnum.Vazio: return CapacidadeTanque;
+
+                case MarcadorCombustivelEnum.Cheio: return ( CapacidadeTanque - ( CapacidadeTanque * 4 / 4 ) );
+
+                case MarcadorCombustivelEnum.Metade: return ( CapacidadeTanque - ( CapacidadeTanque * 1 / 2 ) );
+
+                default:
+                    return 0;
+            }
         }
     }
 }

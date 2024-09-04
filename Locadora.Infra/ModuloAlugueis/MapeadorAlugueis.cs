@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Locadora.Infra.ModuloAlugueis
 {
-    public class MapeadorAlugueis
+    public class MapeadorLocacao : IEntityTypeConfiguration<Alugueis>
     {
         public void Configure(EntityTypeBuilder<Alugueis> builder)
         {
-            builder.ToTable("TBLocacao");
+                        builder.ToTable("TBAlugueis");
 
             builder.Property(l => l.Id)
                 .HasColumnType("int")
@@ -68,8 +68,7 @@ namespace Locadora.Infra.ModuloAlugueis
 
             builder.HasMany(l => l.TaxasSelecionadas)
                 .WithMany(t => t.Locacoes)
-                .UsingEntity(j => j.ToTable("TBLocacaoTaxa"));
-
+                .UsingEntity(j => j.ToTable("TBAlugueisTaxas"));
         }
     }
 }

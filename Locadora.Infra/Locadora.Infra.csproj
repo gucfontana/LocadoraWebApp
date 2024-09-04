@@ -23,4 +23,8 @@
     <ProjectReference Include="..\Locadora.Dominio\Locadora.Dominio.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Migrations\LocadoraDbContextModelSnapshot.cs" />
+  </ItemGroup>
+
 </Project>

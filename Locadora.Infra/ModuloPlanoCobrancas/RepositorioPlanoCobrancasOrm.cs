@@ -30,5 +30,13 @@ namespace Locadora.Infra.ModuloPlanoCobrancas
                 .AsNoTracking()
                 .ToList();
         }
+
+        public PlanoCobrancas ? FiltrarPlano(Func<PlanoCobrancas, bool> predicate)
+        {
+            return ObterRegistros()
+                .Include(p => p.GrupoVeiculos)
+                .Where(predicate)
+                .FirstOrDefault();
+        }
     }
 }

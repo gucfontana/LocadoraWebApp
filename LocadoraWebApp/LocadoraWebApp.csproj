@@ -14,6 +14,8 @@
     <EmbeddedResource Remove="Views\GrupoVeiculos\**" />
     <None Remove="Views\GrupoVeiculos\**" />
     <Content Remove="Combustiveis.json" />
+    <Compile Remove="Mapping\Resolvers\GrupoVeiculosResolver.cs" />
+    <Content Remove="Views\Alugueis\Editarr.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

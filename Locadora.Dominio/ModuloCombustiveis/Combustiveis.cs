@@ -1,3 +1,5 @@
+using Locadora.Dominio.ModuloAlugueis;
+
 namespace Locadora.Dominio.ModuloCombustiveis
 {
     public class Combustiveis
@@ -26,7 +28,7 @@ namespace Locadora.Dominio.ModuloCombustiveis
             ValorAlcool = valorAlcool;
         }
 
-        public decimal ObterValorCombustivel(TipoCombustivelEnum tipoCombustivel)
+        public object ObterValorCombustivel(TipoCombustivelEnum tipoCombustivel)
         {
             return tipoCombustivel switch
             {
