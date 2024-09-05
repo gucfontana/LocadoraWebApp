@@ -9,6 +9,7 @@ using Locadora.Aplicacao.ModuloPlanoCobrancas;
 using Locadora.Aplicacao.ModuloTaxas;
 using Locadora.Aplicacao.ModuloVeiculos;
 using Locadora.Dominio.ModuloAlugueis;
+using Locadora.Dominio.ModuloAutenticacao;
 using Locadora.Dominio.ModuloClientes;
 using Locadora.Dominio.ModuloCombustiveis;
 using Locadora.Dominio.ModuloCondutores;
@@ -26,6 +27,8 @@ using Locadora.Infra.ModuloPlanoCobrancas;
 using Locadora.Infra.ModuloTaxas;
 using Locadora.Infra.ModuloVeiculos;
 using LocadoraWebApp.Mapping.Resolvers;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 
 namespace LocadoraWebApp
 {
@@ -60,7 +63,32 @@ namespace LocadoraWebApp
             builder.Services.AddScoped<ServicoCombustiveis>();
             builder.Services.AddScoped<ServicoAlugueis>();
             
+            // identity
             builder.Services.AddScoped<ServicoAutenticacao>();
+            builder.Services.AddIdentity<Usuario, Perfil>().AddEntityFrameworkStores<LocadoraDbContext>().AddDefaultTokenProviders();
+
+            builder.Services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequiredLength = 3;
+                options.Password.RequiredUniqueChars = 1;
+            });
+
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+            {
+                options.Cookie.Name = "AspNetCore.Cookies";
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+                options.SlidingExpiration = true;
+            });
+
+            builder.Services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Autenticacao/Login";
+                options.AccessDeniedPath = "/AcessoNegado";
+            });
 
             // features
             builder.Services.AddScoped<FotosValueResolver>();
