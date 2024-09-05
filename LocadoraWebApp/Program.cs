@@ -1,5 +1,6 @@
 using System.Reflection;
 using Locadora.Aplicacao.ModuloAlugueis;
+using Locadora.Aplicacao.ModuloAutenticacao;
 using Locadora.Aplicacao.ModuloClientes;
 using Locadora.Aplicacao.ModuloCombustiveis;
 using Locadora.Aplicacao.ModuloCondutores;
@@ -58,6 +59,8 @@ namespace LocadoraWebApp
             builder.Services.AddScoped<ServicoCondutores>();
             builder.Services.AddScoped<ServicoCombustiveis>();
             builder.Services.AddScoped<ServicoAlugueis>();
+            
+            builder.Services.AddScoped<ServicoAutenticacao>();
 
             // features
             builder.Services.AddScoped<FotosValueResolver>();
