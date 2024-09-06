@@ -10,7 +10,7 @@ namespace LocadoraWebApp.Controllers
     {
         private readonly ServicoAutenticacao servicoAutenticacao;
 
-        public AutenticacaoController(ServicoAutenticacao servicoAutenticacao)
+        public AutenticacaoController(ServicoAutenticacao servicoAutenticacao) : base(servicoAutenticacao)
         {
             this.servicoAutenticacao = servicoAutenticacao;
         }

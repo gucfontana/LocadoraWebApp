@@ -4,6 +4,7 @@ using Locadora.Aplicacao.ModuloAutenticacao;
 using Locadora.Aplicacao.ModuloClientes;
 using Locadora.Aplicacao.ModuloCombustiveis;
 using Locadora.Aplicacao.ModuloCondutores;
+using Locadora.Aplicacao.ModuloFuncionario;
 using Locadora.Aplicacao.ModuloGrupoVeiculos;
 using Locadora.Aplicacao.ModuloPlanoCobrancas;
 using Locadora.Aplicacao.ModuloTaxas;
@@ -13,6 +14,7 @@ using Locadora.Dominio.ModuloAutenticacao;
 using Locadora.Dominio.ModuloClientes;
 using Locadora.Dominio.ModuloCombustiveis;
 using Locadora.Dominio.ModuloCondutores;
+using Locadora.Dominio.ModuloFuncionario;
 using Locadora.Dominio.ModuloGrupoVeiculos;
 using Locadora.Dominio.ModuloPlanoCobrancas;
 using Locadora.Dominio.ModuloTaxas;
@@ -22,6 +24,7 @@ using Locadora.Infra.ModuloAlugueis;
 using Locadora.Infra.ModuloClientes;
 using Locadora.Infra.ModuloCombustiveis;
 using Locadora.Infra.ModuloCondutores;
+using Locadora.Infra.ModuloFuncionarios;
 using Locadora.Infra.ModuloGrupoVeiculos;
 using Locadora.Infra.ModuloPlanoCobrancas;
 using Locadora.Infra.ModuloTaxas;
@@ -51,6 +54,7 @@ namespace LocadoraWebApp
             builder.Services.AddScoped<IRepositorioCondutores, RepositorioCondutoresOrm>();
             builder.Services.AddScoped<IRepositorioCombustiveis, RepositorioCombustiveisOrm>();
             builder.Services.AddScoped<IRepositorioAlugueis, RepositorioAlugueisOrm>();
+            builder.Services.AddScoped<IRepositorioFuncionario, RepositorioFuncionarioOrm>();
 
 
             // servicos
@@ -62,6 +66,7 @@ namespace LocadoraWebApp
             builder.Services.AddScoped<ServicoCondutores>();
             builder.Services.AddScoped<ServicoCombustiveis>();
             builder.Services.AddScoped<ServicoAlugueis>();
+            builder.Services.AddScoped<ServicoFuncionario>();
             
             // identity
             builder.Services.AddScoped<ServicoAutenticacao>();

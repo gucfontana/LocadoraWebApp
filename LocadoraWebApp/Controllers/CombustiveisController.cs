@@ -1,4 +1,5 @@
 using AutoMapper;
+using Locadora.Aplicacao.ModuloAutenticacao;
 using Locadora.Aplicacao.ModuloCombustiveis;
 using Locadora.Dominio.ModuloCombustiveis;
 using LocadoraWebApp.Controllers.Compartilhado;
@@ -10,7 +11,7 @@ public class CombustiveisController : WebControllerBase
     private readonly ServicoCombustiveis servicoCombustivel;
     private readonly IMapper mapeador;
 
-    public CombustiveisController(ServicoCombustiveis servicoCombustivel, IMapper mapeador)
+    public CombustiveisController(ServicoAutenticacao servicoAutenticacao,ServicoCombustiveis servicoCombustivel, IMapper mapeador) : base(servicoAutenticacao)
     {
         this.servicoCombustivel = servicoCombustivel;
         this.mapeador = mapeador;

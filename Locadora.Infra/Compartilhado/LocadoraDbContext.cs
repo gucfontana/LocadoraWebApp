@@ -3,6 +3,7 @@ using Locadora.Dominio.ModuloAutenticacao;
 using Locadora.Dominio.ModuloClientes;
 using Locadora.Dominio.ModuloCombustiveis;
 using Locadora.Dominio.ModuloCondutores;
+using Locadora.Dominio.ModuloFuncionario;
 using Locadora.Dominio.ModuloGrupoVeiculos;
 using Locadora.Dominio.ModuloPlanoCobrancas;
 using Locadora.Dominio.ModuloTaxas;
@@ -23,6 +24,7 @@ namespace Locadora.Infra.Compartilhado
         public DbSet<Condutores> Condutores { get; set; }
         public DbSet<Combustiveis> Combustiveis { get; set; }
         public DbSet<Alugueis> Locacoes { get; set; }
+        public DbSet<Funcionario> Funcionarios { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

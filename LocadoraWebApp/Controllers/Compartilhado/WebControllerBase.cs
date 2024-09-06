@@ -1,12 +1,30 @@
 ﻿using FluentResults;
+using Locadora.Aplicacao.ModuloAutenticacao;
 using LocadoraWebApp.Extensions;
 using LocadoraWebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LocadoraWebApp.Controllers.Compartilhado
-{
+namespace LocadoraWebApp.Controllers.Compartilhado;
+
     public abstract class WebControllerBase : Controller
     {
+        protected readonly ServicoAutenticacao servicoAuth;
+
+        protected int ? EmpresaId
+        {
+            get
+            {
+                var empresaId = servicoAuth.ObterIdEmpresaAsync(User).Result;
+
+                return empresaId;
+            }
+        }
+
+        protected WebControllerBase(ServicoAutenticacao servicoAuth)
+        {
+            this.servicoAuth = servicoAuth;
+        }
+
         protected IActionResult MensagemRegistroNaoEncontrado(int idRegistro)
         {
             TempData.SerializarMensagemViewModel(new MensagemViewModel
@@ -36,4 +54,3 @@ namespace LocadoraWebApp.Controllers.Compartilhado
             });
         }
     }
-}

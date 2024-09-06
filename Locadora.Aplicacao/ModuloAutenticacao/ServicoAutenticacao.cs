@@ -1,5 +1,8 @@
+using System.Security.Authentication;
+using System.Security.Claims;
 using FluentResults;
 using Locadora.Dominio.ModuloAutenticacao;
+using Locadora.Dominio.ModuloFuncionario;
 using Microsoft.AspNetCore.Identity;
 
 namespace Locadora.Aplicacao.ModuloAutenticacao
@@ -9,12 +12,14 @@ namespace Locadora.Aplicacao.ModuloAutenticacao
         private readonly UserManager<Usuario> userManager;
         private readonly SignInManager<Usuario> signInManager;
         private readonly RoleManager<Perfil> roleManager;
+        private readonly IRepositorioFuncionario repositorioFuncionario;
 
         public ServicoAutenticacao(UserManager<Usuario> userManager, SignInManager<Usuario> signInManager, RoleManager<Perfil> roleManager)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.roleManager = roleManager;
+            IRepositorioFuncionario repositorioFuncionario;
         }
 
         public async Task<Result<Usuario>> Registrar(Usuario usuario, string senha, TipoUsuarioEnum tipoUsuario)
@@ -67,6 +72,26 @@ namespace Locadora.Aplicacao.ModuloAutenticacao
             await signInManager.SignOutAsync();
 
             return Result.Ok();
+        }
+
+        public async Task<int ?> ObterIdEmpresaAsync(ClaimsPrincipal claim)
+        {
+            var usuario = await userManager.GetUserAsync(claim);
+
+            var perfilSelecionado = TipoUsuarioEnum.Funcionario.ToString();
+
+            if (claim.IsInRole(perfilSelecionado))
+            {
+                var funcionario = repositorioFuncionario
+                    .SelecionarPorId(f => f.UsuarioId == usuario!.Id);
+
+                if (funcionario is null)
+                    throw new AuthenticationException("Não foi possível selecionar o funcionário registrado!");
+
+                return funcionario.EmpresaId;
+            }
+
+            return usuario?.Id;
         }
     }
 }

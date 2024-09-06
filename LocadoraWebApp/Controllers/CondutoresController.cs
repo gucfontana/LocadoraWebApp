@@ -1,4 +1,5 @@
 using AutoMapper;
+using Locadora.Aplicacao.ModuloAutenticacao;
 using Locadora.Aplicacao.ModuloClientes;
 using Locadora.Aplicacao.ModuloCondutores;
 using Locadora.Dominio.ModuloCondutores;
@@ -16,9 +17,10 @@ namespace LocadoraWebApp.Controllers
     private readonly IMapper mapeador;
 
     public CondutoresController(
+        ServicoAutenticacao servicoAutenticacao,
         ServicoCondutores servico,
         ServicoClientes servicoCliente,
-        IMapper mapeador)
+        IMapper mapeador) : base(servicoAutenticacao)
     {
         this.servico = servico;
         this.servicoCliente = servicoCliente;

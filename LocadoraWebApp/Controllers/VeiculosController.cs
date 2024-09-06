@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Locadora.Aplicacao.ModuloAutenticacao;
 using Locadora.Aplicacao.ModuloGrupoVeiculos;
 using Locadora.Aplicacao.ModuloVeiculos;
 using Locadora.Dominio.ModuloVeiculos;
@@ -17,10 +18,11 @@ namespace LocadoraWebApp.Controllers
 
         public VeiculosController
         (
+            ServicoAutenticacao servicoAutenticacao,
             ServicoVeiculos servico,
             ServicoGrupoVeiculos servicoGrupos,
             IMapper mapeador
-        )
+        ) : base(servicoAutenticacao)
         {
             this.servico = servico;
             this.servicoGrupos = servicoGrupos;

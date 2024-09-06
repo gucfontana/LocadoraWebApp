@@ -1,4 +1,5 @@
 using AutoMapper;
+using Locadora.Aplicacao.ModuloAutenticacao;
 using Locadora.Aplicacao.ModuloTaxas;
 using Locadora.Dominio.ModuloTaxas;
 using LocadoraWebApp.Controllers.Compartilhado;
@@ -12,7 +13,7 @@ namespace LocadoraWebApp.Controllers
         private readonly ServicoTaxas servico;
         private readonly IMapper mapeador;
 
-        public TaxasController(ServicoTaxas servico, IMapper mapeador)
+        public TaxasController(ServicoAutenticacao servicoAutenticacao,ServicoTaxas servico, IMapper mapeador) : base(servicoAutenticacao)
         {
             this.servico = servico;
             this.mapeador = mapeador;
